@@ -19,7 +19,7 @@ def mapa():
 
 @app.route("/registro")
 def registro():
-    return "registro"
+    return render_template('registro.html')
 
 @app.route("/listado")
 def listado():
