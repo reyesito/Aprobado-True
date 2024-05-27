@@ -9,7 +9,7 @@
     <meta content="Localiza a tu mascota" name="description">
 
     <!-- Favicon -->
-    <link href="../static/img/favicon.ico" rel="icon">
+    <link rel="icon" href="../static/img/favicon.png" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
@@ -18,14 +18,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Flaticon Font -->
-    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/flaticon/font/flaticon.css') }}" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -64,7 +64,7 @@
         <div class="row py-3 px-lg-5">
             <div class="col-lg-4">
                 <a href="" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Pet</span>Lover</h1>
+                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
                 </a>
             </div>
 
@@ -102,10 +102,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="listado.html" class="nav-item nav-link">Listado</a>
-
+                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ url_for('about')}}" class="nav-item nav-link">About</a>
+                    <a href="{{ url_for('listado')}}" class="nav-item nav-link">Listado</a>
+                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa</a>
+                    <a href="{{ url_for('contact')}}" class="nav-item nav-link">Contact</a>
                     <!--<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 m-0">
@@ -114,9 +115,8 @@
                         </div>
                     </div>-->
 
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporte</a>
+                <a href="{{ url_for('registro')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
             </div>
         </nav>
     </div>
@@ -130,15 +130,15 @@
     <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
-                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Lover</h1>
-                <p class="m-0">Ipsum amet sed vero et lorem stet eos ut, labore sed sed stet sea est ipsum ut. Volup amet ea sanct ipsum, dolore vero lorem no duo eirmod. Eirmod amet ipsum no ipsum lorem clita ut. Ut sed sit lorem ea lorem sed, amet stet sit sea ea diam tempor kasd kasd. Diam nonumy etsit tempor ut sed diam sed et ea</p>
+                <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Lost</span>Pets</h1>
+                <p class="m-0">Somos una red de ayuda para encontrar a nuestras mascotas, sabemos los importante que es para uno, por eso nos comprometemos a que esta web le sea de mucha ayuda.</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
                         <h5 class="text-primary mb-4">Get In Touch</h5>
-                        <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
-                        <p><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
+                        <p><i class="fa fa-map-marker-alt mr-2"></i>Av. Paseo Colón 850, CABA, Argentina</p>
+                        <p><i class="fa fa-phone-alt mr-2"></i>+54 011 5285-0401</p>
                         <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
                         <div class="d-flex justify-content-start mt-4">
                             <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
@@ -179,8 +179,8 @@
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white">
-                    &copy; <a class="text-white font-weight-bold" href="#">Your Site Name</a>. All Rights Reserved. Designed by
-                    <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                    &copy; <a class="text-white font-weight-bold" href="#">Lost pets</a>. All Rights Reserved. Designed by
+                    <a class="text-white font-weight-bold" href="https://github.com/reyesito/Aprobado-True">Aprobados=true</a>
                 </p>
             </div>
             <div class="col-md-6 text-center text-md-right">
@@ -212,18 +212,17 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.j') }}s"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='base.html') }}mail/contact.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../static/js/main.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
-
 </html>
