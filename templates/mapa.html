@@ -1,52 +1,35 @@
-{% extends 'base.html'%}
+
+{% extends "base.html" %}
 
 {% block body %}
-        <!DOCTYPE html>
-        <html>
-        <head>
-        <title>Google Maps with Markers</title>
+        <h1>Mapa con Marcadores</h1>
+        <div id="map" style="height: 500px; width: 100%;"></div>
+        {% endblock %}
+
+        {% block scripts %}
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
         <script>
-                function iniciarMap() {
+        function iniciarMap() {
+        fetch('/guardar_marcadores')
+                .then(response => response.json())
+                .then(data => {
                 var mapOptions = {
                         zoom: 15,
-                        center: {lat: -34.5865167, lng: -58.4127763}
+                        center: {lat: data[0].lat, lng: data[0].lng} // Centrar en el primer marcador
                 };
                 
                 var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-                
-                var markersData = [
-                        {lat: -34.5865167, lng: -58.4127763}, //prueba
-                        {lat: -34.5865, lng: -58.413},
-                        {lat: -34.587, lng: -58.4125},
-                ];
-                
-                for (var i = 0; i < markersData.length; i++) {
-                        var coords = markersData[i];
+
+                data.forEach(function(location) {
                         var marker = new google.maps.Marker({
-                        position: coords,
+                        position: {lat: location.lat, lng: location.lng},
                         map: map
                         });
-                }
-                }
+                });
+                });
+        }
 
-                google.maps.event.addDomListener(window, 'load', iniciarMap);
+        // Inicializar el mapa cuando la página haya cargado completamente
+        window.onload = iniciarMap;
         </script>
-        <style>
-                #map {
-                height: 100%;
-                width: 100%;
-                }
-                html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                }
-        </style>
-        </head>
-        <body>
-        <div id="map"></div>
-        </body>
-        </html>
-
 {% endblock %}
