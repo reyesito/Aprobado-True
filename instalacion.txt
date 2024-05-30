@@ -1,2 +1,6 @@
 #!/bin/bash
 pipenv install flask
+
+
+pip install flask_sqlalchemy
+pip install mysql-connector-python
