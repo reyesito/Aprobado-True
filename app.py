@@ -15,7 +15,8 @@ def contact():
     return render_template('contact.html')
 @app.route("/mapa")
 def mapa():
-    return "mapa"
+
+    return render_template('mapa.html')
 
 @app.route("/registro")
 def registro():
