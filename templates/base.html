@@ -88,6 +88,7 @@
         </div>
     </div>
     <!-- Topbar End -->
+    
 
 
     <!-- Navbar Start -->
@@ -216,6 +217,10 @@
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
 
     <!-- Contact Javascript File -->
     <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>

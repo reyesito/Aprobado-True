@@ -15,7 +15,8 @@ def contact():
     return render_template('contact.html')
 @app.route("/mapa")
 def mapa():
-    return "mapa"
+
+    return render_template('mapa.html')
 
 @app.route("/registro")
 def registro():
@@ -50,6 +51,21 @@ def form():
         return redirect(url_for("exito", nombre=nombre, email=mail, msg=msg))
     return render_template('contact.html')
 """
+
+"""
+# Prueba no mas de guardar marcadores
+@app.route('/guardar_marcadores', methods=['POST'])
+def guardar_marcadores():
+    if request.method == 'POST':
+        marcadores = request.json  # Recibe los datos de marcadores en formato JSON
+        //depende como se quiera procesar aca, podriamos usar base de datos, esto solo lo muestra en mensaje
+        return jsonify({'message': 'Datos de marcadores recibidos correctamente', 'marcadores': marcadores})
+
+@app.route("/mapa")
+def mapa():
+    return render_template('mapa.html')
+"""
+
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port=5001, debug=True)
