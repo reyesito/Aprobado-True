@@ -1,31 +1,49 @@
-CREATE TABLE IF NOT EXISTS mascotas (
+CREATE TABLE IF NOT EXISTS mascotas_encontradas (
+    id_mascota INT NOT NULL AUTO_INCREMENT,
+    raza VARCHAR(20),
+    nombre VARCHAR(20),
+    color VARCHAR(20),
+    sexo VARCHAR(3),
+    tamanio VARCHAR(10),
+    edad_aprox VARCHAR(10),
+    barrio VARCHAR(30),
+    mail_duenio VARCHAR(40),
+    telefono_duenio int(20),
+    telefono_informante int(20),
+    id_informante INT,
+    PRIMARY KEY(id_mascota),
+    FOREIGN KEY (telefono_informante) REFERENCES informante(telefono),
+    FOREIGN KEY (mail_duenio,telefono_duenio) REFERENCES duenios(mail,telefono)
+);
+CREATE TABLE IF NOT EXISTS mascotas_perdidas (
     id_mascota INT NOT NULL AUTO_INCREMENT,
     raza VARCHAR(20),
     nombre VARCHAR(20),
     color VARCHAR(20),
     sexo VARCHAR(3),
     edad_aprox VARCHAR(10),
+    tamanio VARCHAR(10),
     barrio VARCHAR(30),
-    PRIMARY KEY(id_mascota)
+    mail_duenio VARCHAR(40),
+    telefono_duenio int(20),
+    PRIMARY KEY(id_mascota),
+    FOREIGN KEY (mail_duenio,telefono_duenio) REFERENCES duenios(mail,telefono)
 
 );
 
 CREATE TABLE IF NOT EXISTS duenios (
-    id_registro INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50),
     mail VARCHAR(40),
     telefono int(20),
     barrio VARCHAR(50),
-    PRIMARY KEY(id_registro)
+    PRIMARY KEY(telefono)
 );
 
 CREATE TABLE IF NOT EXISTS informante(
-    id_informante INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50),
-    mail VARCHAR(40),
     telefono int(20),
     barrio VARCHAR(30),
-    PRIMARY KEY(id_informante)
+    PRIMARY KEY(telefono)
 );
 
 CREATE TABLE IF NOT EXISTS coordenadas (
