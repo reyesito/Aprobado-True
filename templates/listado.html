@@ -5,13 +5,14 @@
 
 
     <!-- Inicio de codigo -->
- <div class="container-fluid p-0 py-5">
-        <div class="container p-0 pt-5">
+    <div class="container-fluid p-0 py-5">
+        <div class="container p-0 pt-5" >
+            <div class="fondo">
             <div class="d-flex flex-column text-center mb-5">
                 <h1 class="display-4 m-0">Mascotas <span class="text-primary">perdidas</span></h1>
                 
             </div>
-                <div class="bg-light mx-3 p-4" id="edit-position">
+                    <div class="bg-light mx-3 p-4" id="edit-position">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4" >
                       
                         <div class="buscador">
@@ -22,19 +23,47 @@
                         </div>
                 </div>
                 <div class="bg-light mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="../static/img/testimonial-2.jpg" style="width: 80px; height: 80px;" alt="">
+                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4" >
+
+
+                     <!-- CASO MASCOTA PERDIDA CON DUEÑO CONOCIDO -->
+                     <div class="mascotas-division">
+                        <img class="img-perro" src="../static/img/testimonial-2.jpg" alt="" >
                         <div class="ml-3">
-                            <h5>Client Name</h5>
-                            <i>Profession</i>
+                            <h1 class="titulo-img"><span class="texto1">{nombre dueno}</span> está buscando a <span class="texto1">{nombre mascota}</span> </h1>
+                            <div class="lista-animales">
+                                <ul>
+                                    <h4><li><span class="texto1">Animal:</span> {animal}</li>
+                                    <li><span class="texto1">Raza:</span> {raza}</li>
+                                    <li><span class="texto1">Color:</span> {color}</li>
+                                    <li><span class="texto1">Sexo:</span> {sexo}</li>
+                                    <li><span class="texto1">Tamaño:</span> {tamano}</li>
+                                    <li><span class="texto1">Edad:</span> {edad}</li>
+                                    <li><span class="texto1">¿Tenía collar?:</span> {respuesta}</li>
+                                    <li><span class="texto1">Barrio:</span> {barrio}</li>
+                                    <li><span class="texto1">Correo de contacto:</span> {correo}</li>
+                                    <li><span class="texto1">Celular de contacto:</span> {celular}</li></h4>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </ul>
+                            </div>
+        
+
+                            </div>
+                            
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
                 </div>
                 <div class="bg-light mx-3 p-4">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                        <img class="img-fluid" src="../static/img/testimonial-3.jpg" style="width: 80px; height: 80px;" alt="">
+                    </div>
+
+
+
+                        <!--<img class="img-fluid" src="../static/img/testimonial-3.jpg" style="width: 80px; height: 80px;" alt="">
                         <div class="ml-3">
+            
                             <h5>Client Name</h5>
                             <i>Profession</i>
                         </div>
@@ -49,7 +78,7 @@
                             <i>Profession</i>
                         </div>
                     </div>
-                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>
+                    <p class="m-0">Sed ea amet kasd elitr stet, stet rebum et ipsum est duo elitr eirmod clita lorem. Dolor tempor ipsum sanct clita</p>-->
                 </div>
             </div>
         </div>

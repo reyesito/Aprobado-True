@@ -71,7 +71,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   color: black;
   border-radius: 50px;
   font-size: 20px;
-  border: 1px solid orange;
+  border: 1px solid rgb(255,181,82);;
 }
 
 
@@ -81,7 +81,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   right: 0;
   top: 0;
   width: 80px;
-  background: orange;
+  background: rgb(255,181,82);
   line-height: 80px;
   border-radius: 50%;
   text-align: center;
@@ -103,6 +103,34 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   margin-top: 10px;
 }
 
+.lista-animales ul {
+  list-style-type: none; 
+  color: black;
+}
+
+.mascotas-division {
+  display: flex; 
+  position: relative;
+  width: 800%;
+  margin-top: 10%;
+  background: white;
+  color: white;
+  box-shadow: 20px 20px rgb(255,181,82);
+
+
+}
+
+.texto1 {
+  color: rgb(255,181,82)
+
+}
+
+.titulo-img{
+  position: relative;
+  left: 1%;
+}
+
+
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
@@ -113,6 +141,14 @@ body {
   text-align: left;
   background-color: #fff;
 }
+.img-perro{
+  position: relative;
+  justify-content: center; 
+  align-items: center; 
+  height: 300px
+}
+
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
