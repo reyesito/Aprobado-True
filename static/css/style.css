@@ -53,6 +53,56 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+.buscador {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  transform: translate(-45%, 52%);
+  padding: 10 px;
+
+}
+
+#barrita {
+  outline: none;
+  box-sizing:border-box;
+  height: 60px;
+  width: 900px;
+  padding: 0 20px;
+  color: black;
+  border-radius: 50px;
+  font-size: 20px;
+  border: 1px solid orange;
+}
+
+
+
+.lupita {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+  background: orange;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.lupita i {
+  font-size: 25px;
+  color: white;
+  line-height: 80px;
+}
+
+#edit-position{
+  margin-top: 200px;
+}
+
+#edit-margen {
+  margin-top: 10px;
+}
+
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
@@ -7670,7 +7720,9 @@ button.bg-dark:focus {
   margin-bottom: 1rem !important;
 }
 
-.ml-3,
+.ml-3 {
+  margin-top: 10%;
+}
 .mx-3 {
   margin-left: 1rem !important;
 }
