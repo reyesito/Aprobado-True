@@ -111,7 +111,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 .mascotas-division {
   display: flex; 
   position: relative;
-  width: 800%;
   margin-top: 10%;
   background: white;
   color: white;
@@ -120,15 +119,33 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 }
 
+.mascotas-division2 {
+  display: flex; 
+  position: relative;
+  margin-top: 10%;
+  background: white;
+  color: white;
+  box-shadow: 20px 20px rgb(255,181,82);
+  margin-left: -40px;
+  margin-right: -40px;
+  width: 120%;
+
+}
+
+
 .texto1 {
   color: rgb(255,181,82)
 
 }
 
 .titulo-img{
-  position: relative;
-  left: 1%;
+  display: block;
+  position: static;
+  margin-left: 1%;
+  white-space: pre-wrap
 }
+
+
 
 
 body {
@@ -141,10 +158,10 @@ body {
   text-align: left;
   background-color: #fff;
 }
+
 .img-perro{
   position: relative;
-  justify-content: center; 
-  align-items: center; 
+  align-items: relative; 
   height: 300px
 }
 
