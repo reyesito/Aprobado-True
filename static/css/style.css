@@ -71,7 +71,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   color: black;
   border-radius: 50px;
   font-size: 20px;
-  border: 1px solid rgb(255,181,82);;
+  border: 1px solid #ED6436;;
 }
 
 
@@ -81,7 +81,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   right: 0;
   top: 0;
   width: 80px;
-  background: rgb(255,181,82);
+  background: #ED6436;
   line-height: 80px;
   border-radius: 50%;
   text-align: center;
@@ -112,36 +112,36 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: flex; 
   position: relative;
   margin-top: 10%;
-  background: white;
+  background: #E8C39E;
   color: white;
-  box-shadow: 20px 20px rgb(255,181,82);
+  box-shadow: 20px 20px #ED6436;
+  margin-right: 20px;
 
-
+  
 }
 
 .mascotas-division2 {
   display: flex; 
   position: relative;
   margin-top: 10%;
-  background: white;
+  background: #E8C39E;
   color: white;
-  box-shadow: 20px 20px rgb(255,181,82);
+  box-shadow: 20px 20px #ED6436;
   margin-left: -40px;
-  margin-right: -40px;
-  width: 120%;
-
+  margin-right: -20px;
+  width:120%;
 }
 
 
 .texto1 {
-  color: rgb(255,181,82)
+  color: #ED6436;
 
 }
 
 .titulo-img{
   display: block;
   position: static;
-  margin-left: 1%;
+  margin-left: 2%;
   white-space: pre-wrap
 }
 
