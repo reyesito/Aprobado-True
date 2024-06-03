@@ -9,3 +9,9 @@ services:
       MYSQL_ROOT_PASSWORD: 12345
     volumes:
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+api:
+    build: .
+    ports:
+      - '5000:5000'
+    depends_on:
+      - lost_pets

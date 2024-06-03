@@ -32,18 +32,20 @@ CREATE TABLE IF NOT EXISTS mascotas_perdidas (
 );
 
 CREATE TABLE IF NOT EXISTS duenios (
+    id_duenio INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50),
     mail VARCHAR(40),
     telefono int(20),
     barrio VARCHAR(50),
-    PRIMARY KEY(telefono)
+    PRIMARY KEY(id_duenio)
 );
 
 CREATE TABLE IF NOT EXISTS informante(
+    id_informante INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(50),
     telefono int(20),
     barrio VARCHAR(30),
-    PRIMARY KEY(telefono)
+    PRIMARY KEY(id_informante)
 );
 
 CREATE TABLE IF NOT EXISTS coordenadas (
