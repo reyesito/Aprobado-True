@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from api import *
+"""from api import *"""
 app = Flask(__name__)
 
 @app.route("/")
@@ -13,8 +13,8 @@ def about():
 @app.route("/contact")
 def contact():
     return render_template('contact.html')
-@app.route("/mapa")
-def mapa():
+@app.route("/map")
+def map():
 
     return render_template('mapa.html')
 
@@ -27,7 +27,7 @@ def registrado():
     if request.method == "POST":
         name = request.form.get("fname")
         registrar(name, name_pet, email, contact, city)
-    return redirect(url_for("home")
+    return redirect(url_for("home"))
 
 @app.route("/listado")
 def listado():
