@@ -30,60 +30,11 @@
 
 <body>
     <!-- Topbar Start -->
-    <div class="container-fluid">
-        <div class="row bg-secondary py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white pr-3" href="">FAQs</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white px-3" href="">Help</a>
-                    <span class="text-white">|</span>
-                    <a class="text-white pl-3" href="">Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-white px-3" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-white pl-3" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
         <div class="row py-3 px-lg-5">
             <div class="col-lg-4">
-                <a href="" class="navbar-brand d-none d-lg-block">
+                <a href="{{ url_for('home') }}" class="navbar-brand d-none d-lg-block">
                     <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
                 </a>
-            </div>
-
-            <!--<div class="col-lg-8 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="d-inline-flex flex-column text-center pr-3 border-right">
-                        <h6>Opening Hours</h6>
-                        <p class="m-0">8.00AM - 9.00PM</p>
-                    </div>
-                    <div class="d-inline-flex flex-column text-center px-3 border-right">
-                        <h6>Email Us</h6>
-                        <p class="m-0">info@example.com</p>
-                    </div>
-                    <div class="d-inline-flex flex-column text-center pl-3">
-                        <h6>Call Us</h6>
-                        <p class="m-0">+012 345 6789</p>
-                    </div>
-                </div>-->
-
             </div>
         </div>
     </div>
@@ -91,7 +42,7 @@
     
 
 
-    <!-- Navbar Start -->
+    <!-- Barra de Navegación -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -116,27 +67,28 @@
                     </div>-->
 
                 </div>
-                <a href="{{ url_for('registro')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
+                <a href="{{ url_for('registro')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('contact')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
-    <!-- Navbar End -->
+    <!-- Fin de Barra de Navegación -->
 
     {% block body %}
 
     {% endblock %}
 
-    <!-- Footer Start -->
+    <!-- Footer -->
     <div class="container-fluid bg-dark text-white py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
             <div class="col-lg-4 col-md-12 mb-5">
                 <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Lost</span>Pets</h1>
-                <p class="m-0">Somos una red de ayuda para encontrar a nuestras mascotas, sabemos los importante que es para uno, por eso nos comprometemos a que esta web le sea de mucha ayuda.</p>
+                <p class="m-0">En Lost Pets nos encargamos de brindarle un lugar cálido y con cuidados de primera, hasta que nuestros animales vuelvan a su hogar.</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Get In Touch</h5>
+                        <h5 class="text-primary mb-4">Contactanos!</h5>
                         <p><i class="fa fa-map-marker-alt mr-2"></i>Av. Paseo Colón 850, CABA, Argentina</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>+54 011 5285-0401</p>
                         <p><i class="fa fa-envelope mr-2"></i>info@example.com</p>
@@ -148,28 +100,13 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Popular Links</h5>
+                        <h5 class="text-primary mb-4">Accesos Directos</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>About Us</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Services</a>
-                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Team</a>
-                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            <a class="text-white mb-2" href="{{ url_for('home') }}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="{{ url_for('about') }}"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
+                            <a class="text-white mb-2" href="{{ url_for('listado') }}"><i class="fa fa-angle-right mr-2"></i>Mascotas</a>
+                            <a class="text-white mb-2" href="{{ url_for('mapa') }}"><i class="fa fa-angle-right mr-2"></i>Mapa Interactivo</a>
                         </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-primary mb-4">Newsletter</h5>
-                        <form action="">
-                            <div class="form-group">
-                                <input type="text" class="form-control border-0" placeholder="Your Name" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="form-control border-0" placeholder="Your Email" required="required" />
-                            </div>
-                            <div>
-                                <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Submit Now</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -183,25 +120,9 @@
                     <a class="text-white font-weight-bold" href="https://github.com/reyesito/Aprobado-True">Aprobados=true</a>
                 </p>
             </div>
-            <div class="col-md-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
-    <!-- Footer End -->
+    <!-- Footer Fin -->
 
 
     <!-- Back to Top -->
@@ -209,7 +130,7 @@
 
 
 
-    <!-- JavaScript Libraries -->
+    <!-- Librerias de Javascript -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
