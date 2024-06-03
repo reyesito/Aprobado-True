@@ -11,14 +11,14 @@ def about():
     return render_template('about.html')
 
 @app.route("/contact")
-def contact():
+def mascota_encontrada():
     return render_template('contact.html')
 @app.route("/mapa")
 def mapa():
     return "mapa"
 
 @app.route("/registro")
-def registro():
+def mascota_perdida():
     return render_template('registro.html')
 
 @app.route("/listado")
