@@ -21,14 +21,11 @@ def mapa():
 @app.route("/registro")
 def registro():
         return render_template('registro.html')
+
 @app.route("/registrado", methods=["POST"])
 def registrado():
     if request.method == "POST":
         name = request.form.get("fname")
-        name_pet =
-        email =
-        contact =
-        city =
         registrar(name, name_pet, email, contact, city)
     return redirect(url_for("home")
 
@@ -70,11 +67,11 @@ def guardar_marcadores():
         marcadores = request.json  # Recibe los datos de marcadores en formato JSON
         //depende como se quiera procesar aca, podriamos usar base de datos, esto solo lo muestra en mensaje
         return jsonify({'message': 'Datos de marcadores recibidos correctamente', 'marcadores': marcadores})
-
+"""
 @app.route("/mapa")
 def mapa():
     return render_template('mapa.html')
-"""
+
 
 
 if __name__ == "__main__":
