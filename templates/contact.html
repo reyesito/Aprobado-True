@@ -13,21 +13,65 @@
                 <div class="contact-form">
                     <div id="success"></div>
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                        <div class="control-group">
-                            <input type="text" class="form-control p-4" id="name" placeholder="Nombre y Apellido" required="required" data-validation-required-message="Please enter your name" />
-                            <p class="help-block text-danger"></p>
+
+                        <div class="title-label-datos">
+                            <label for="datos-informante" class="label-formulario">Tus Datos:</label>
                         </div>
+                        
                         <div class="control-group">
-                            <input type="email" class="form-control p-4" id="email" placeholder="Email" required="required" data-validation-required-message="Please enter your email" />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                        <div class="control-group">
-                            <input type="text" class="form-control p-4" id="telefono" placeholder="Teléfono/Celular (cod. área + numero)" required="required" data-validation-required-message="Please enter a telefono" />
+                            <input type="text" class="form-control p-4" id="fnombre" placeholder="Nombre Completo" required="required" data-validation-required-message="Porfavor ingrese numero de Teléfono" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="barrio" placeholder="Barrio" required="required" data-validation-required-message="Please enter a telefono" />
+                            <input type="text" class="form-control p-4" id="ftelefono" placeholder="Teléfono/Celular (cod. área + numero)" required="required" data-validation-required-message="Porfavor ingrese numero de Teléfono" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fbarrio-informante" placeholder="Barrio donde resides" required="required" data-validation-required-message="Porfavor ingrese su Barrio" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="title-label-datos">
+                            <label for="datos-mascota-encontrada" class="label-formulario">Datos de la Mascota Encontrada:</label>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="ftipo-animal" placeholder="Animal Encontrado" required="required" data-validation-required-message="Porfavor ingrese tipo de animal" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fraza" placeholder="Raza" required="required" data-validation-required-message="Porfavor especificar raza" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fcolor" placeholder="Color (Pelaje/Escamas/Plumaje/etc.)" required="required" data-validation-required-message="Porfavor especificar color" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="ftamanio" placeholder="Tamaño (Chico/Mediano/Grande)" required="required" data-validation-required-message="Porfavor especificar Tamaño" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="fedad" placeholder="Edad (Cachorro/Adulto)" required="required" data-validation-required-message="Porfavor especificar Edad" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="fcollar" placeholder="Posee Collar (Si/No)" required="required" data-validation-required-message="Porfavor especificar si llevaba Collar" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fbarrio-encontrado" placeholder="Barrio donde econtró a la mascota" required="required" data-validation-required-message="Porfavor ingrese un Barrio para poder ubicarlo" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="fcomentarios" placeholder="Comentarios (Da información adicional)" required="required" data-validation-required-message="No exceder las 500 palabras"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
 
