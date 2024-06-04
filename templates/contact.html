@@ -5,39 +5,83 @@
     <!-- Contact Start -->
     <div class="container-fluid pt-5">
         <div class="d-flex flex-column text-center mb-5 pt-5">
-            <h4 class="text-secondary mb-3">Contact Us</h4>
-            <h1 class="display-4 m-0">Contact For <span class="text-primary">Any Query</span></h1>
+            <h4 class="text-secondary mb-3">¡Contactemos al Dueño!</h4>
+            <h1 class="display-4 m-0">¡Tu Ayuda es Crucial, <span class="text-primary">Déjanos tus Datos!</span></h1>
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
                     <form name="sentMessage" id="contactForm" novalidate="novalidate">
+
+                        <div class="title-label-datos">
+                            <label for="datos-informante" class="label-formulario">Tus Datos:</label>
+                        </div>
+                        
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                            <input type="text" class="form-control p-4" id="fnombre" placeholder="Nombre Completo" required="required" data-validation-required-message="Porfavor ingrese numero de Teléfono" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="ftelefono" placeholder="Teléfono/Celular (cod. área + numero)" required="required" data-validation-required-message="Porfavor ingrese numero de Teléfono" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fbarrio-informante" placeholder="Barrio donde resides" required="required" data-validation-required-message="Porfavor ingrese su Barrio" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="title-label-datos">
+                            <label for="datos-mascota-encontrada" class="label-formulario">Datos de la Mascota Encontrada:</label>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="ftipo-animal" placeholder="Animal Encontrado" required="required" data-validation-required-message="Porfavor ingrese tipo de animal" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fraza" placeholder="Raza" required="required" data-validation-required-message="Porfavor especificar raza" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <input type="text" class="form-control p-4" id="fcolor" placeholder="Color (Pelaje/Escamas/Plumaje/etc.)" required="required" data-validation-required-message="Porfavor especificar color" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                            <input type="text" class="form-control p-4" id="ftamanio" placeholder="Tamaño (Chico/Mediano/Grande)" required="required" data-validation-required-message="Porfavor especificar Tamaño" />
                             <p class="help-block text-danger"></p>
                         </div>
+                        
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                            <input type="email" class="form-control p-4" id="fedad" placeholder="Edad (Cachorro/Adulto)" required="required" data-validation-required-message="Porfavor especificar Edad" />
                             <p class="help-block text-danger"></p>
                         </div>
+
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="fcollar" placeholder="Posee Collar (Si/No)" required="required" data-validation-required-message="Porfavor especificar si llevaba Collar" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="fbarrio-encontrado" placeholder="Barrio donde econtró a la mascota" required="required" data-validation-required-message="Porfavor ingrese un Barrio para poder ubicarlo" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="fcomentarios" placeholder="Comentarios (Da información adicional)" required="required" data-validation-required-message="No exceder las 500 palabras"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+
                         <div>
-                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">¡Gracias por tu ayuda!</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="col-12 mb-n2 p-0">
-                <iframe style="width: 100%; height: 500px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
+
         </div>
     </div>
     <!-- Contact End -->

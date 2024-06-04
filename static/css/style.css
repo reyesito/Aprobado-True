@@ -9838,3 +9838,10 @@ h6 {
   padding: 0;
   list-style-type: none;
 }
+
+
+.label-formulario{
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #181818;
+}
