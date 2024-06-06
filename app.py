@@ -45,7 +45,8 @@ def reportado():
             "sex": sex,
             "size": size,
             "city": city,
-            "telephone": telephone
+            "telephone": telephone,
+            "mail": mail
         }
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
@@ -79,7 +80,8 @@ def registrado():
             "sex":sex,
             "size":size,
             "city":city,
-            "telephone":telephone
+            "telephone":telephone,
+            "mail": mail
         }
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
