@@ -8,7 +8,6 @@ engine = create_engine("mysql+mysqlconnector://root@localhost/ids")
 
 #Funcionalidades de duenios:
 
-@app.route('/duenios', methods=['GET'])
 def obtener_duenios():
     conn = engine.connect()
     query = "SELECT * FROM duenios;"
@@ -31,7 +30,6 @@ def obtener_duenios():
 
     return jsonify(data), 200
 
-@app.route('/create_duenio', methods=['POST'])
 def crear_duenio():
     conn = engine.connect()
     new_duenio = request.get_json()
@@ -46,7 +44,6 @@ def crear_duenio():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-@app.route('/duenios/<id_duenio>', methods=['PATCH'])
 def actualizar_duenio(id_duenio):
     conn = engine.connect()
     mod_duenio = request.get_json()
@@ -69,7 +66,6 @@ def actualizar_duenio(id_duenio):
         return jsonify({'message': str(err.__cause__)}), 500
     return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
-@app.route('/duenios/<id_duenio>', methods=['GET'])
 def obtener_duenio(id_duenio):
     conn = engine.connect()
     query = f"SELECT * FROM duenios WHERE id_duenio = {id_duenio};"
@@ -91,7 +87,6 @@ def obtener_duenio(id_duenio):
         return jsonify(data), 200
     return jsonify({"message": "El dueño no existe"}), 404
 
-@app.route('/duenios/<id_duenio>', methods=['DELETE'])
 def borrar_duenio(id_duenio):
     conn = engine.connect()
     query = f"DELETE FROM duenios WHERE id_duenio = {id_duenio};"
@@ -111,7 +106,6 @@ def borrar_duenio(id_duenio):
 
 #Funcionalidades de Informantes
 
-@app.route('/informantes', methods=['GET'])
 def obtener_informantes():
     conn = engine.connect()
     query = "SELECT * FROM informante;"
@@ -133,7 +127,6 @@ def obtener_informantes():
 
     return jsonify(data), 200
 
-@app.route('/create_informante', methods=['POST'])
 def crear_informante():
     conn = engine.connect()
     new_informante = request.get_json()
@@ -148,7 +141,6 @@ def crear_informante():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-@app.route('/informantes/<id_informante>', methods=['PATCH'])
 def actualizar_informante(id_informante):
     conn = engine.connect()
     mod_informante = request.get_json()
@@ -170,7 +162,6 @@ def actualizar_informante(id_informante):
         return jsonify({'message': str(err.__cause__)}), 500
     return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
-@app.route('/informantes/<id_informante>', methods=['GET'])
 def obtener_informante(id_informante):
     conn = engine.connect()
     query = f"SELECT * FROM informante WHERE id_informante = {id_informante};"
@@ -191,7 +182,6 @@ def obtener_informante(id_informante):
         return jsonify(data), 200
     return jsonify({"message": "El informante no existe"}), 404
 
-@app.route('/informantes/<id_informante>', methods=['DELETE'])
 def borrar_informante(id_informante):
     conn = engine.connect()
     query = f"DELETE FROM informante WHERE id_informante = {id_informante};"
@@ -211,7 +201,6 @@ def borrar_informante(id_informante):
 
 #Funcionalidades de Mascotas perdidas
 
-@app.route('/mascotas_perdidas', methods=['GET'])
 def obtener_mascotas_perdidas():
     conn = engine.connect()
     query = "SELECT * FROM mascotas_perdidas;"
@@ -239,7 +228,6 @@ def obtener_mascotas_perdidas():
 
     return jsonify(data), 200
 
-@app.route('/create_mascota_perdida', methods=['POST'])
 def crear_mascota_perdida():
     conn = engine.connect()
     new_mascota = request.get_json()
@@ -256,7 +244,6 @@ def crear_mascota_perdida():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-@app.route('/mascotas_perdidas/<id_mascota>', methods=['PATCH'])
 def actualizar_mascota_perdida(id_mascota):
     conn = engine.connect()
     mod_mascota = request.get_json()
@@ -279,7 +266,6 @@ def actualizar_mascota_perdida(id_mascota):
         return jsonify({'message': str(err.__cause__)}), 500
     return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
-@app.route('/mascotas_perdidas/<id_mascota>', methods=['GET'])
 def obtener_mascota_perdida(id_mascota):
     conn = engine.connect()
     query = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
@@ -306,7 +292,6 @@ def obtener_mascota_perdida(id_mascota):
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
 
-@app.route('/mascotas_perdidas/<id_mascota>', methods=['DELETE'])
 def borrar_mascota_perdida(id_mascota):
     conn = engine.connect()
     query = f"DELETE FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
@@ -326,7 +311,6 @@ def borrar_mascota_perdida(id_mascota):
 
 #FUncinoalidades de mascotas encontradas
 
-@app.route('/mascotas_encontradas', methods=['GET'])
 def obtener_mascotas_encontradas():
     conn = engine.connect()
     query = "SELECT * FROM mascotas_encontradas;"
@@ -356,7 +340,6 @@ def obtener_mascotas_encontradas():
 
     return jsonify(data), 200
 
-@app.route('/create_mascota_encontrada', methods=['POST'])
 def crear_mascota_encontrada():
     conn = engine.connect()
     new_mascota = request.get_json()
@@ -375,7 +358,6 @@ def crear_mascota_encontrada():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-@app.route('/mascotas_encontradas/<id_mascota>', methods=['PATCH'])
 def actualizar_mascota_encontrada(id_mascota):
     conn = engine.connect()
     mod_mascota = request.get_json()
@@ -399,7 +381,6 @@ def actualizar_mascota_encontrada(id_mascota):
         return jsonify({'message': str(err.__cause__)}), 500
     return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
-@app.route('/mascotas_encontradas/<id_mascota>', methods=['GET'])
 def obtener_mascota_encontrada(id_mascota):
     conn = engine.connect()
     query = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
@@ -428,7 +409,6 @@ def obtener_mascota_encontrada(id_mascota):
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
 
-@app.route('/mascotas_encontradas/<id_mascota>', methods=['DELETE'])
 def borrar_mascota_encontrada(id_mascota):
     conn = engine.connect()
     query = f"DELETE FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
@@ -448,3 +428,5 @@ def borrar_mascota_encontrada(id_mascota):
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port="5000", debug=True)
+
+
