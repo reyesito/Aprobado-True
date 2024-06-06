@@ -172,6 +172,7 @@ def obtener_mascotas_perdidas():
     for row in result:
         entity = {
             'id_mascota': row.id_mascota,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -188,7 +189,7 @@ def obtener_mascotas_perdidas():
 def crear_mascota_perdida(data_lost_pet):
     conn = engine.connect()
     query = f"""INSERT INTO mascotas_perdidas (raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
-                VALUES ('{data_lost_pet["raza"]}', '{data_lost_pet["nombre"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sexo"]}',
+                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["raza"]}', '{data_lost_pet["nombre"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sexo"]}',
                         '{data_lost_pet["tamanio"]}', '{data_lost_pet["barrio"]}',
                         '{data_lost_pet["mail_duenio"]}', {data_lost_pet["telefono_duenio"]});"""
     try:
@@ -213,6 +214,7 @@ def obtener_mascota_perdida(id_lost_pet):
         row = result.first()
         data = {
             'id_mascota': row.id_mascota,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -257,6 +259,7 @@ def obtener_mascotas_encontradas():
     for row in result:
         entity = {
             'id_mascota': row.id_mascota,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -276,8 +279,8 @@ def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
     query = f"""INSERT INTO mascotas_encontradas (raza, nombre, color, sexo, tamanio, edad_aprox, barrio,
                 mail_duenio, telefono_duenio, telefono_informante, id_informante) 
-                VALUES ('{data_pet["raza"]}', '{data_pet["nombre"]}', '{data_pet["color"]}', 
-                '{data_pet["sexo"]}', '{data_pet["tamanio"]}', 
+                VALUES ('{data_pet["animal"]}','{data_pet["raza"]}', '{data_pet["nombre"]}', '{data_pet["color"]}', 
+                '{data_pet["sexo"]}', '{data_pet["tamanio"]}',
                 '{data_pet["barrio"]}', '{data_pet["mail_duenio"]}', {data_pet["telefono_duenio"]},
                 {data_pet["telefono_informante"]}, {data_pet["id_informante"]});"""
     try:
@@ -303,6 +306,7 @@ def obtener_mascota_encontrada(id_mascota):
         row = result.first()
         data = {
             'id_mascota': row.id_mascota,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
