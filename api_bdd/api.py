@@ -87,7 +87,7 @@ def borrar_duenio(id_owner):
 
 def obtener_informantes():
     conn = engine.connect()
-    query = "SELECT * FROM informante;"
+    query = "SELECT * FROM informantes;"
     try:
         result = conn.execute(text(query))
         conn.close()
@@ -109,7 +109,7 @@ def obtener_informantes():
 
 def crear_informante(data_informant):
     conn = engine.connect()
-    query = f"""INSERT INTO informante (nombre,mail, telefono, barrio) 
+    query = f"""INSERT INTO informantes (nombre,mail, telefono, barrio) 
                 VALUES ('{data_informant["user_name"]}','{data_informant["mail"]}', {data_informant["telephone"]}, '{data_informant["city"]}');"""
     try:
         conn.execute(text(query))
@@ -123,7 +123,7 @@ def crear_informante(data_informant):
 
 def obtener_informante(id_informant):
     conn = engine.connect()
-    query = f"SELECT * FROM informante WHERE id_informante = {id_informant};"
+    query = f"SELECT * FROM informantes WHERE id_informante = {id_informant};"
     try:
         result = conn.execute(text(query))
         conn.commit()
@@ -135,6 +135,7 @@ def obtener_informante(id_informant):
         data = {
             'id_informante': row.id_informante,
             'nombre': row.nombre,
+            'mail' : row.mail,
             'telefono': row.telefono,
             'barrio': row.barrio
         }
@@ -143,8 +144,8 @@ def obtener_informante(id_informant):
 
 def borrar_informante(id_informant):
     conn = engine.connect()
-    query = f"DELETE FROM informante WHERE id_informante = {id_informant};"
-    validation_query = f"SELECT * FROM informante WHERE id_informante = {id_informant};"
+    query = f"DELETE FROM informantes WHERE id_informante = {id_informant};"
+    validation_query = f"SELECT * FROM informantes WHERE id_informante = {id_informant};"
     try:
         val_result = conn.execute(text(validation_query))
         if val_result.rowcount != 0:
@@ -270,7 +271,8 @@ def obtener_mascotas_encontradas():
             'tamanio': row.tamanio,
             'barrio': row.barrio,
             'mail_informante': row.mail_informante,
-            'telefono_informante': row.telefono_informante
+            'telefono_informante': row.telefono_informante,
+            'id_informante' : row.id_informante
         }
         data.append(entity)
 
