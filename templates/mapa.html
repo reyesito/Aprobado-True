@@ -1,34 +1,56 @@
-
 {% extends "base.html" %}
 
 {% block body %}
-        <div id="map" style="height: 500px; width: 100%;"></div>
+    <div id="map" style="height: 500px; width: 100%;"></div>
 {% endblock %}
 
 {% block scripts %}
-
-    <!-- Incluir OpenLayers (visor de mapas)-->
+    <!-- Incluir OpenLayers (visor de mapas) -->
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script>
     function iniciarMap() {
+        // Crear el mapa
         var map = new ol.Map({
-             // El ID del elemento HTML donde se mostrará el mapa
             target: 'map',
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM()
                 })
             ],
-            // La vista inicial del mapa, incluyendo el centro del mapa y el nivel de zoom
             view: new ol.View({
-                //coordenadas de longitud/latitud inicial
                 center: ol.proj.fromLonLat([-58.4127763, -34.5865167]),
                 zoom: 15
             })
         });
+
+        // Función para agregar marcadores al mapa
+        function agregarMarcadores(coordenadas) {
+            coordenadas.forEach(function(coord) {
+                var marcador = new ol.Feature({
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat([coord.altitud, coord.latitud]))
+                });
+
+                var capaMarcadores = new ol.layer.Vector({
+                    source: new ol.source.Vector({
+                        features: [marcador]
+                    })
+                });
+
+                map.addLayer(capaMarcadores);
+            });
+        }
+
+        // Obtener las coordenadas desde el API
+        fetch('/api/coordenadas')
+            .then(response => response.json())
+            .then(data => {
+                agregarMarcadores(data);
+            })
+            .catch(error => console.error('Error al obtener coordenadas:', error));
     }
 
     // Inicializar el mapa cuando la página haya cargado completamente
     window.onload = iniciarMap;
     </script>
 {% endblock %}
+
