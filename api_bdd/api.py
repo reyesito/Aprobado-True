@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
 app = Flask(__name__)
-engine = create_engine("mysql+mysqlconnector://root@localhost/ids")
+engine = create_engine("mysql+mysqlconnector://root@lost_pets/lost_pets_db")
 
 #Funcionalidades de duenios:
 
