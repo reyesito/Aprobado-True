@@ -44,27 +44,6 @@ def crear_duenio():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-def actualizar_duenio(id_duenio):
-    conn = engine.connect()
-    mod_duenio = request.get_json()
-    query = f"""UPDATE duenios SET nombre = '{mod_duenio['nombre']}'
-                {f", mail = '{mod_duenio['mail']}'" if "mail" in mod_duenio else ""}
-                {f", telefono = {mod_duenio['telefono']}" if "telefono" in mod_duenio else ""}
-                {f", barrio = '{mod_duenio['barrio']}'" if "barrio" in mod_duenio else ""}
-                WHERE id_duenio = {id_duenio};"""
-    query_validation = f"SELECT * FROM duenios WHERE id_duenio = {id_duenio};"
-    try:
-        val_result = conn.execute(text(query_validation))
-        if val_result.rowcount != 0:
-            conn.execute(text(query))
-            conn.commit()
-            conn.close()
-        else:
-            conn.close()
-            return jsonify({'message': "El dueño no existe"}), 404
-    except SQLAlchemyError as err:
-        return jsonify({'message': str(err.__cause__)}), 500
-    return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
 def obtener_duenio(id_duenio):
     conn = engine.connect()
@@ -141,26 +120,6 @@ def crear_informante():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-def actualizar_informante(id_informante):
-    conn = engine.connect()
-    mod_informante = request.get_json()
-    query = f"""UPDATE informante SET nombre = '{mod_informante['nombre']}'
-                {f", telefono = {mod_informante['telefono']}" if "telefono" in mod_informante else ""}
-                {f", barrio = '{mod_informante['barrio']}'" if "barrio" in mod_informante else ""}
-                WHERE id_informante = {id_informante};"""
-    query_validation = f"SELECT * FROM informante WHERE id_informante = {id_informante};"
-    try:
-        val_result = conn.execute(text(query_validation))
-        if val_result.rowcount != 0:
-            conn.execute(text(query))
-            conn.commit()
-            conn.close()
-        else:
-            conn.close()
-            return jsonify({'message': "El informante no existe"}), 404
-    except SQLAlchemyError as err:
-        return jsonify({'message': str(err.__cause__)}), 500
-    return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
 def obtener_informante(id_informante):
     conn = engine.connect()
@@ -243,28 +202,6 @@ def crear_mascota_perdida():
         return jsonify({'message': 'Se ha producido un error: ' + str(err.__cause__)}), 500
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
-
-def actualizar_mascota_perdida(id_mascota):
-    conn = engine.connect()
-    mod_mascota = request.get_json()
-    query = f"""UPDATE mascotas_perdidas SET raza = '{mod_mascota['raza']}', nombre = '{mod_mascota['nombre']}',
-                color = '{mod_mascota['color']}', sexo = '{mod_mascota['sexo']}', edad_aprox = '{mod_mascota['edad_aprox']}',
-                tamanio = '{mod_mascota['tamanio']}', barrio = '{mod_mascota['barrio']}', 
-                mail_duenio = '{mod_mascota['mail_duenio']}', telefono_duenio = {mod_mascota['telefono_duenio']}
-                WHERE id_mascota = {id_mascota};"""
-    query_validation = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
-    try:
-        val_result = conn.execute(text(query_validation))
-        if val_result.rowcount != 0:
-            conn.execute(text(query))
-            conn.commit()
-            conn.close()
-        else:
-            conn.close()
-            return jsonify({'message': "La mascota no existe"}), 404
-    except SQLAlchemyError as err:
-        return jsonify({'message': str(err.__cause__)}), 500
-    return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
 def obtener_mascota_perdida(id_mascota):
     conn = engine.connect()
@@ -358,28 +295,6 @@ def crear_mascota_encontrada():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-def actualizar_mascota_encontrada(id_mascota):
-    conn = engine.connect()
-    mod_mascota = request.get_json()
-    query = f"""UPDATE mascotas_encontradas SET raza = '{mod_mascota['raza']}', nombre = '{mod_mascota['nombre']}',
-                color = '{mod_mascota['color']}', sexo = '{mod_mascota['sexo']}', tamanio = '{mod_mascota['tamanio']}',
-                edad_aprox = '{mod_mascota['edad_aprox']}', barrio = '{mod_mascota['barrio']}',
-                mail_duenio = '{mod_mascota['mail_duenio']}', telefono_duenio = {mod_mascota['telefono_duenio']},
-                telefono_informante = {mod_mascota['telefono_informante']}, id_informante = {mod_mascota['id_informante']}
-                WHERE id_mascota = {id_mascota};"""
-    query_validation = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
-    try:
-        val_result = conn.execute(text(query_validation))
-        if val_result.rowcount != 0:
-            conn.execute(text(query))
-            conn.commit()
-            conn.close()
-        else:
-            conn.close()
-            return jsonify({'message': "La mascota no existe"}), 404
-    except SQLAlchemyError as err:
-        return jsonify({'message': str(err.__cause__)}), 500
-    return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
 def obtener_mascota_encontrada(id_mascota):
     conn = engine.connect()
@@ -428,5 +343,72 @@ def borrar_mascota_encontrada(id_mascota):
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port="5000", debug=True)
+
+"""
+from flask import Flask, jsonify, request
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine, text
+from sqlalchemy.exc import SQLAlchemyError
+
+app = Flask(__name__)
+engine = create_engine("mysql+mysqlconnector://root@localhost/ids")
+
+def ejecutar_query(query):
+    conn = engine.connect()
+    try:
+        resultado = conn.execute(text(query))
+        conn.commit()
+        return resultado
+    except SQLAlchemyError as err:
+        return str(err.__cause__)
+    finally:
+        conn.close()
+
+def obtener_todo(tabla):
+    query = f"SELECT * FROM {tabla};"
+    resultadoado = ejecutar_query(query)
+    data = [{column: value for column, value in row.items()} for row in resultadoado]
+    return jsonify(data), 200
+
+No se si funciona esto:
+def crear_dato(tabla):
+    new_record = request.get_json()
+    columns = ', '.join(new_record.keys())
+    values = ', '.join([f"'{value}'" for value in new_record.values()])
+    query = f"INSERT INTO {tabla} ({columns}) VALUES ({values});"
+    resultado = ejecutar_query(query)
+    return jsonify({'message': f'Se ha agregado correctamente a {tabla}'}), 201
+
+def actualizar_dato(tabla, id_tabla,id_busqueda):
+    mod_record = request.get_json()
+    update_values = ', '.join([f"{column} = '{value}'" for column, value in mod_record.items()])
+    query = f"UPDATE {tabla} SET {update_values} WHERE {id_tabla} = {id_busqueda};"
+    resultado = ejecutar_query(query)
+    if resultado.rowcount == 0:
+        return jsonify({"message": f"No se encontró el registro en {tabla}"}), 404
+    return jsonify({'message': f'Se ha modificado correctamente en {tabla}'}), 200
+
+
+def obtener_por_id(tabla, id_tabla,id_busqueda):
+    query = f"SELECT * FROM {tabla} WHERE {id_tabla} = {id_busqueda};"
+    resultado = ejecutar_query(query)
+    if resultado.rowcount == 0:
+        return jsonify({"message": "El registro no existe"}), 404
+    data = [{column: value for column, value in row.items()} for row in resultado]
+    return jsonify(data[0]), 200
+
+
+
+def borrar_dato(tabla, id_tabla,id_busqueda):
+    query = f"DELETE FROM {tabla} WHERE {id_tabla} = {id_busqueda};"
+    resultado = ejecutar_query(query)
+    if resultado.rowcount == 0:
+        return jsonify({"message": f"No se encontró el registro en {tabla}"}), 404
+    return jsonify({'message': f'Se ha eliminado correctamente de {tabla}'}), 200
+
+if __name__ == "__main__":
+    app.run("127.0.0.1", port="5000", debug=True)
+"""
+
 
 
