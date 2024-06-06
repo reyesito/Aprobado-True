@@ -33,7 +33,7 @@ def obtener_duenios():
 def crear_duenio(data_owner):
     conn = engine.connect()
     query = f"""INSERT INTO duenios (nombre, mail, telefono, barrio) 
-                VALUES ('{data_owner["nombre"]}', '{data_owner["mail"]}', {data_owner["telefono"]}, '{data_owner["barrio"]}');"""
+                VALUES ('{data_owner["user_name"]}', '{data_owner["mail"]}', '{data_owner["telephone"]}', '{data_owner["city"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -99,6 +99,7 @@ def obtener_informantes():
         entity = {
             'id_informante': row.id_informante,
             'nombre': row.nombre,
+            'mail': row.mail,
             'telefono': row.telefono,
             'barrio': row.barrio
         }
@@ -108,8 +109,8 @@ def obtener_informantes():
 
 def crear_informante(data_informant):
     conn = engine.connect()
-    query = f"""INSERT INTO informante (nombre, telefono, barrio) 
-                VALUES ('{data_informant["nombre"]}', {data_informant["telefono"]}, '{data_informant["barrio"]}');"""
+    query = f"""INSERT INTO informante (nombre,mail, telefono, barrio) 
+                VALUES ('{data_informant["user_name"]}','{data_informant["mail"]}', {data_informant["telephone"]}, '{data_informant["city"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -188,10 +189,10 @@ def obtener_mascotas_perdidas():
 
 def crear_mascota_perdida(data_lost_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_perdidas (raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
-                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["raza"]}', '{data_lost_pet["nombre"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sexo"]}',
-                        '{data_lost_pet["tamanio"]}', '{data_lost_pet["barrio"]}',
-                        '{data_lost_pet["mail_duenio"]}', {data_lost_pet["telefono_duenio"]});"""
+    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
+                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}',
+                        '{data_lost_pet["size"]}', '{data_lost_pet["city"]}',
+                        '{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -277,12 +278,10 @@ def obtener_mascotas_encontradas():
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (raza, nombre, color, sexo, tamanio, edad_aprox, barrio,
-                mail_duenio, telefono_duenio, telefono_informante, id_informante) 
-                VALUES ('{data_pet["animal"]}','{data_pet["raza"]}', '{data_pet["nombre"]}', '{data_pet["color"]}', 
-                '{data_pet["sexo"]}', '{data_pet["tamanio"]}',
-                '{data_pet["barrio"]}', '{data_pet["mail_duenio"]}', {data_pet["telefono_duenio"]},
-                {data_pet["telefono_informante"]}, {data_pet["id_informante"]});"""
+    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_informante, telefono_informante) 
+                VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}',
+                        '{data_pet["size"]}', '{data_pet["city"]}',
+                        '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
