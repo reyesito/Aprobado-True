@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS mascotas_perdidas (
     barrio VARCHAR(30),
     mail_duenio VARCHAR(40),
     telefono_duenio INT(20),
-    id_duenio INT NOT NULL AUTO_INCREMENT,
+    id_duenio INT NOT NULL AUTO_INCREMENT,m
     PRIMARY KEY(id_mascota),
     FOREIGN KEY (id_duenio) REFERENCES duenios(id_duenio)
 

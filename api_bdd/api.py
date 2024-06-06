@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
-app = Flask(__name__)
 engine = create_engine("mysql+mysqlconnector://root@lost_pets/lost_pets_db")
 
 #Funcionalidades de duenios:
@@ -338,8 +337,19 @@ def borrar_mascota_encontrada(id_pet):
         return jsonify(str(err.__cause__)), 500
     return jsonify({'message': 'Se ha eliminado correctamente'}), 202
 
-if __name__ == "__main__":
-    app.run("127.0.0.1", port="5000", debug=True)
+#Funcion de Mapa de coordenadas
+def obtener_coordenadas():
+    conn = engine.connect()
+    query = "SELECT latitud, altitud FROM coordenadas;"
+    try:
+        result = conn.execute(text(query))
+        conn.close()
+    except Exception as e:
+        return jsonify({'message': 'Se ha producido un error: ' + str(e)}), 500
+
+    data = [{'latitud': row[0], 'altitud': row[1]} for row in result]
+
+    return jsonify(data), 200
 
 """
 from flask import Flask, jsonify, request
