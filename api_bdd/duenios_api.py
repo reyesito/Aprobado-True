@@ -8,7 +8,7 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost/lost_pets_db
 
 
 @app.route('/duenios', methods=['GET'])
-def get_owners():
+def obtener_duenios():
     conn = engine.connect()
     query = "SELECT * FROM duenios;"
     try:
@@ -30,7 +30,7 @@ def get_owners():
     return jsonify(data), 200
 
 @app.route('/crear_duenio', methods=['POST'])
-def create_owner():
+def crear_duenio():
     conn = engine.connect()
     new_owner = request.get_json()
     query = text("""
@@ -47,7 +47,7 @@ def create_owner():
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 @app.route('/duenios/<id_duenio>', methods=['PATCH'])
-def update_owner(id_duenio):
+def actualizar_duenio(id_duenio):
     conn = engine.connect()
     mod_owner = request.get_json()
     query = text("""
@@ -72,7 +72,7 @@ def update_owner(id_duenio):
     return jsonify({'message': 'Se ha modificado correctamente'}), 200
 
 @app.route('/duenios/<id_duenio>', methods=['GET'])
-def get_owner(id_duenio):
+def obtener_duenio(id_duenio):
     conn = engine.connect()
     query = text("SELECT * FROM duenios WHERE id_duenio = :id_duenio;")
     try:
@@ -95,7 +95,7 @@ def get_owner(id_duenio):
     return jsonify(data), 200
 
 @app.route('/duenios/<id_duenio>', methods=['DELETE'])
-def delete_owner(id_duenio):
+def borrar_duenio(id_duenio):
     conn = engine.connect()
     query = text("DELETE FROM duenios WHERE id_duenio = :id_duenio;")
     validation_query = text("SELECT * FROM duenios WHERE id_duenio = :id_duenio")
