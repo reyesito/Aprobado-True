@@ -269,7 +269,7 @@ def obtener_mascotas_encontradas():
             'sexo': row.sexo,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
-            'mail_duenio': row.mail_informante,
+            'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante
         }
         data.append(entity)
