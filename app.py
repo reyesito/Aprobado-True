@@ -12,14 +12,15 @@ def about():
 
 @app.route("/contact")
 def mascota_encontrada():
-    return render_template('contact.html')
+    return render_template('mascota-encontrada.html')
+
 @app.route("/mapa")
 def mapa():
     return "mapa"
 
 @app.route("/registro")
 def mascota_perdida():
-    return render_template('registro.html')
+    return render_template('mascota-perdida.html')
 
 @app.route("/listado")
 def listado():
