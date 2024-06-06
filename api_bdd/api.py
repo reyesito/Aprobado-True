@@ -30,11 +30,10 @@ def obtener_duenios():
 
     return jsonify(data), 200
 
-def crear_duenio():
+def crear_duenio(data_owner):
     conn = engine.connect()
-    new_duenio = request.get_json()
     query = f"""INSERT INTO duenios (nombre, mail, telefono, barrio) 
-                VALUES ('{new_duenio["nombre"]}', '{new_duenio["mail"]}', {new_duenio["telefono"]}, '{new_duenio["barrio"]}');"""
+                VALUES ('{data_owner["nombre"]}', '{data_owner["mail"]}', {data_owner["telefono"]}, '{data_owner["barrio"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -45,9 +44,10 @@ def crear_duenio():
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 
-def obtener_duenio(id_duenio):
+
+def obtener_duenio(id_owner):
     conn = engine.connect()
-    query = f"SELECT * FROM duenios WHERE id_duenio = {id_duenio};"
+    query = f"SELECT * FROM duenios WHERE id_duenio = {id_owner};"
     try:
         result = conn.execute(text(query))
         conn.commit()
@@ -66,10 +66,10 @@ def obtener_duenio(id_duenio):
         return jsonify(data), 200
     return jsonify({"message": "El dueño no existe"}), 404
 
-def borrar_duenio(id_duenio):
+def borrar_duenio(id_owner):
     conn = engine.connect()
-    query = f"DELETE FROM duenios WHERE id_duenio = {id_duenio};"
-    validation_query = f"SELECT * FROM duenios WHERE id_duenio = {id_duenio};"
+    query = f"DELETE FROM duenios WHERE id_duenio = {id_owner};"
+    validation_query = f"SELECT * FROM duenios WHERE id_duenio = {id_owner};"
     try:
         val_result = conn.execute(text(validation_query))
         if val_result.rowcount != 0:
@@ -106,11 +106,10 @@ def obtener_informantes():
 
     return jsonify(data), 200
 
-def crear_informante():
+def crear_informante(data_informant):
     conn = engine.connect()
-    new_informante = request.get_json()
     query = f"""INSERT INTO informante (nombre, telefono, barrio) 
-                VALUES ('{new_informante["nombre"]}', {new_informante["telefono"]}, '{new_informante["barrio"]}');"""
+                VALUES ('{data_informant["nombre"]}', {data_informant["telefono"]}, '{data_informant["barrio"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -121,9 +120,9 @@ def crear_informante():
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 
-def obtener_informante(id_informante):
+def obtener_informante(id_informant):
     conn = engine.connect()
-    query = f"SELECT * FROM informante WHERE id_informante = {id_informante};"
+    query = f"SELECT * FROM informante WHERE id_informante = {id_informant};"
     try:
         result = conn.execute(text(query))
         conn.commit()
@@ -141,10 +140,10 @@ def obtener_informante(id_informante):
         return jsonify(data), 200
     return jsonify({"message": "El informante no existe"}), 404
 
-def borrar_informante(id_informante):
+def borrar_informante(id_informant):
     conn = engine.connect()
-    query = f"DELETE FROM informante WHERE id_informante = {id_informante};"
-    validation_query = f"SELECT * FROM informante WHERE id_informante = {id_informante};"
+    query = f"DELETE FROM informante WHERE id_informante = {id_informant};"
+    validation_query = f"SELECT * FROM informante WHERE id_informante = {id_informant};"
     try:
         val_result = conn.execute(text(validation_query))
         if val_result.rowcount != 0:
@@ -177,7 +176,6 @@ def obtener_mascotas_perdidas():
             'nombre': row.nombre,
             'color': row.color,
             'sexo': row.sexo,
-            'edad_aprox': row.edad_aprox,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
@@ -187,13 +185,12 @@ def obtener_mascotas_perdidas():
 
     return jsonify(data), 200
 
-def crear_mascota_perdida():
+def crear_mascota_perdida(data_lost_pet):
     conn = engine.connect()
-    new_mascota = request.get_json()
     query = f"""INSERT INTO mascotas_perdidas (raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
-                VALUES ('{new_mascota["raza"]}', '{new_mascota["nombre"]}', '{new_mascota["color"]}', '{new_mascota["sexo"]}',
-                        '{new_mascota["edad_aprox"]}', '{new_mascota["tamanio"]}', '{new_mascota["barrio"]}',
-                        '{new_mascota["mail_duenio"]}', {new_mascota["telefono_duenio"]});"""
+                VALUES ('{data_lost_pet["raza"]}', '{data_lost_pet["nombre"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sexo"]}',
+                        '{data_lost_pet["tamanio"]}', '{data_lost_pet["barrio"]}',
+                        '{data_lost_pet["mail_duenio"]}', {data_lost_pet["telefono_duenio"]});"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -203,9 +200,9 @@ def crear_mascota_perdida():
 
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
-def obtener_mascota_perdida(id_mascota):
+def obtener_mascota_perdida(id_lost_pet):
     conn = engine.connect()
-    query = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
+    query = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_lost_pet};"
     try:
         result = conn.execute(text(query))
         conn.commit()
@@ -220,7 +217,6 @@ def obtener_mascota_perdida(id_mascota):
             'nombre': row.nombre,
             'color': row.color,
             'sexo': row.sexo,
-            'edad_aprox': row.edad_aprox,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
@@ -229,10 +225,10 @@ def obtener_mascota_perdida(id_mascota):
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
 
-def borrar_mascota_perdida(id_mascota):
+def borrar_mascota_perdida(id_lost_pet):
     conn = engine.connect()
-    query = f"DELETE FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
-    validation_query = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_mascota};"
+    query = f"DELETE FROM mascotas_perdidas WHERE id_mascota = {id_lost_pet};"
+    validation_query = f"SELECT * FROM mascotas_perdidas WHERE id_mascota = {id_lost_pet};"
     try:
         val_result = conn.execute(text(validation_query))
         if val_result.rowcount != 0:
@@ -266,7 +262,6 @@ def obtener_mascotas_encontradas():
             'color': row.color,
             'sexo': row.sexo,
             'tamanio': row.tamanio,
-            'edad_aprox': row.edad_aprox,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
             'telefono_duenio': row.telefono_duenio,
@@ -277,15 +272,14 @@ def obtener_mascotas_encontradas():
 
     return jsonify(data), 200
 
-def crear_mascota_encontrada():
+def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    new_mascota = request.get_json()
     query = f"""INSERT INTO mascotas_encontradas (raza, nombre, color, sexo, tamanio, edad_aprox, barrio,
                 mail_duenio, telefono_duenio, telefono_informante, id_informante) 
-                VALUES ('{new_mascota["raza"]}', '{new_mascota["nombre"]}', '{new_mascota["color"]}', 
-                '{new_mascota["sexo"]}', '{new_mascota["tamanio"]}', '{new_mascota["edad_aprox"]}', 
-                '{new_mascota["barrio"]}', '{new_mascota["mail_duenio"]}', {new_mascota["telefono_duenio"]},
-                {new_mascota["telefono_informante"]}, {new_mascota["id_informante"]});"""
+                VALUES ('{data_pet["raza"]}', '{data_pet["nombre"]}', '{data_pet["color"]}', 
+                '{data_pet["sexo"]}', '{data_pet["tamanio"]}', 
+                '{data_pet["barrio"]}', '{data_pet["mail_duenio"]}', {data_pet["telefono_duenio"]},
+                {data_pet["telefono_informante"]}, {data_pet["id_informante"]});"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -314,7 +308,6 @@ def obtener_mascota_encontrada(id_mascota):
             'color': row.color,
             'sexo': row.sexo,
             'tamanio': row.tamanio,
-            'edad_aprox': row.edad_aprox,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
             'telefono_duenio': row.telefono_duenio,
@@ -324,10 +317,10 @@ def obtener_mascota_encontrada(id_mascota):
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
 
-def borrar_mascota_encontrada(id_mascota):
+def borrar_mascota_encontrada(id_pet):
     conn = engine.connect()
-    query = f"DELETE FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
-    validation_query = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
+    query = f"DELETE FROM mascotas_encontradas WHERE id_mascota = {id_pet};"
+    validation_query = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_pet};"
     try:
         val_result = conn.execute(text(validation_query))
         if val_result.rowcount != 0:
@@ -409,6 +402,4 @@ def borrar_dato(tabla, id_tabla,id_busqueda):
 if __name__ == "__main__":
     app.run("127.0.0.1", port="5000", debug=True)
 """
-
-
 
