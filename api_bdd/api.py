@@ -181,7 +181,8 @@ def obtener_mascotas_perdidas():
             'tamanio': row.tamanio,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
-            'telefono_duenio': row.telefono_duenio
+            'telefono_duenio': row.telefono_duenio,
+            'id_duenio' : row.id_duenio
         }
         data.append(entity)
 
@@ -223,7 +224,8 @@ def obtener_mascota_perdida(id_lost_pet):
             'tamanio': row.tamanio,
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
-            'telefono_duenio': row.telefono_duenio
+            'telefono_duenio': row.telefono_duenio,
+            'id_duenio' : row.id_duenio
         }
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
@@ -267,10 +269,8 @@ def obtener_mascotas_encontradas():
             'sexo': row.sexo,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
-            'mail_duenio': row.mail_duenio,
-            'telefono_duenio': row.telefono_duenio,
-            'telefono_informante': row.telefono_informante,
-            'id_informante': row.id_informante
+            'mail_duenio': row.mail_informante,
+            'telefono_informante': row.telefono_informante
         }
         data.append(entity)
 
@@ -278,7 +278,7 @@ def obtener_mascotas_encontradas():
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_informante, telefono_informante) 
+    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante) 
                 VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}',
                         '{data_pet["size"]}', '{data_pet["city"]}',
                         '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
@@ -312,10 +312,9 @@ def obtener_mascota_encontrada(id_mascota):
             'sexo': row.sexo,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
-            'mail_duenio': row.mail_duenio,
-            'telefono_duenio': row.telefono_duenio,
+            'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante,
-            'id_informante': row.id_informante
+            'id_informante' :row.id_informante,
         }
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
