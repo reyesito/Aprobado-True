@@ -145,5 +145,10 @@ def listado():
 def mapa():
     return render_template('mapa.html')
 
+@app.route("/api/coordenadas")
+def api_coordenadas():
+    data, status_code = obtener_coordenadas()
+    return jsonify(data), status_code
+
 if __name__ == "__main__":
     app.run("127.0.0.1", port=5001, debug=True)

@@ -336,7 +336,7 @@ def borrar_mascota_encontrada(id_pet):
     except SQLAlchemyError as err:
         return jsonify(str(err.__cause__)), 500
     return jsonify({'message': 'Se ha eliminado correctamente'}), 202
-"""
+
 #Funcion de Mapa de coordenadas
 def obtener_coordenadas():
     conn = engine.connect()
@@ -350,5 +350,5 @@ def obtener_coordenadas():
     data = [{'latitud': row[0], 'altitud': row[1]} for row in result]
 
     return jsonify(data), 200
-"""
+
 
