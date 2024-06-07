@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
-engine = create_engine("mysql+mysqlconnector://root@lost_pets/lost_pets_db")
+engine = create_engine("mysql+mysqlconnector://root:12345@localhost/lost_pets_db")
 
 #Funcionalidades de duenios:
 
