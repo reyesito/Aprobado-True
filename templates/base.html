@@ -104,7 +104,13 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="{{ url_for('home')}}" class="nav-item nav-link active">Home</a>
                     <a href="{{ url_for('about')}}" class="nav-item nav-link">About</a>
-                    <a href="{{ url_for('listado')}}" class="nav-item nav-link">Listado</a>
+                    <li class="submenu">
+                        <a class="nav-item nav-link">Listas mascotas</a>
+                        <ul class="submenu-opciones">
+                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
+                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link" >Mascotas encontradas</a></li>
+                        </ul>
+                    </li>
                     <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa</a>
                     <a href="{{ url_for('contact')}}" class="nav-item nav-link">Contact</a>
                     <!--<div class="nav-item dropdown">

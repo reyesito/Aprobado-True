@@ -5,6 +5,66 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ .menu-principal {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.menu-principal li {
+  float: left;
+}
+
+.menu-principal li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu-principal li a:hover {
+  background-color: #111;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu-opciones {
+  z-index: 1000;
+}
+
+
+.submenu-opciones {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #181818;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu-opciones li {
+  width: 182px;
+}
+
+.submenu-opciones li a {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.submenu:hover .submenu-opciones {
+  display: block;
+}
+
+
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
