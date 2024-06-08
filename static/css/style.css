@@ -176,6 +176,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   color: white;
   box-shadow: 20px 20px #ED6436;
   margin-right: 20px;
+  width:100%;
 
   
 }
@@ -202,7 +203,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
   position: static;
   margin-left: 2%;
-  white-space: pre-wrap
+  white-space: nowrap;
 }
 
 
