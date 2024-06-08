@@ -24,6 +24,16 @@ def registro():
 @app.route("/listado")
 def listado():
     return render_template("listado.html")
+
+@app.route("/lista-mascotas-encontradas")
+def lista_masc_encontradas():
+    return render_template("lista-masc-encontradas.html")
+
+@app.route("/lista-mascotas-perdidas")
+def lista_masc_perdidas():
+    return render_template("lista-masc-perdidas.html")
+
+
 """
 @app.errorhandler(404)
 def page_not_found(e):
