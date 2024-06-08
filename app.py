@@ -33,6 +33,9 @@ def lista_masc_encontradas():
 def lista_masc_perdidas():
     return render_template("lista-masc-perdidas.html")
 
+@app.route("/mascota-perdida")
+def mascota_perdida():
+    return render_template("mascota-perdida.html")
 
 """
 @app.errorhandler(404)
