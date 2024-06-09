@@ -22,7 +22,7 @@ def mascota_perdida():
 @app.route("/reportado", methods=["POST"])
 def reportado():
     if request.method == "POST":
-        user_name = request.form.get ("fname")
+        user_name = request.form.get("fname")
         pet_name = request.form.get("fpetname")
         animal = request.form.get("fanimal")
         type_class = request.form.get("ftype")
