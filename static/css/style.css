@@ -7738,6 +7738,23 @@ button.bg-dark:focus {
   padding-top: 0 !important;
 }
 
+.buttons-size {
+  width: 36px;
+  height: 36px;
+}
+
+.black-container {
+  background: #111111;
+}
+
+.carousel-button-size {
+  width: 45px; 
+  height: 45px;
+}
+
+.caja-max {
+  max-width: 900px;
+}
 .pr-0,
 .px-0 {
   padding-right: 0 !important;
