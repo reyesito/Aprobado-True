@@ -9846,3 +9846,30 @@ h6 {
   font-size: 1.2em;
   color: #181818;
 }
+
+
+
+.contenedor-errorhandler{
+  background: url('/static/img/img-errorhandeler.png');
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.texto-errorhandler{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error-title{
+  font-size: 6em;
+  margin: 0;
+}
+
+.error-message {
+  font-size: 1.5em;
+  margin: 20px 0;
+}
