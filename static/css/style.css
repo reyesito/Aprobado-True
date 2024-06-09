@@ -531,6 +531,11 @@ mark,
   height: auto;
 }
 
+.img-mascota-tendencia {
+  height: 80px !important;
+  width: 80px !important;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
