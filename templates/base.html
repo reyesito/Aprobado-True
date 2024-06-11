@@ -39,7 +39,7 @@
     </div>
     <!-- Topbar End -->
     
-    <!-- Navbar Start -->
+    <!-- Barra de Navegación -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -50,8 +50,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Home</a>
-                    <a href="{{ url_for('about')}}" class="nav-item nav-link">About</a>
+                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Inicio</a>
+                    <a href="{{ url_for('about')}}" class="nav-item nav-link">Nosotros</a>
+                    <a href="{{ url_for('listado')}}" class="nav-item nav-link">Mascotas</a>
+                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa Interactivo</a>
                     <li class="submenu">
                         <a class="nav-item nav-link">Listas mascotas</a>
                         <ul class="submenu-opciones">
@@ -59,14 +61,14 @@
                             <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link">Mascotas encontradas</a></li>
                         </ul>
                     </li>
-                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa</a>
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
+                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
                 <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
+                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
             </div>
         </nav>
     </div>
-    <!-- Navbar End -->
+    <!-- Fin de Barra de Navegación -->
 
     {% block body %}
     {% endblock %}
@@ -86,10 +88,10 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+54 011 5285-0401</p>
                         <p><i class="fa fa-envelope mr-2"></i>lostpets@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
@@ -105,7 +107,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <div class="container-fluid text-white py-4 px-sm-3 px-md-5 black-container">
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white">
@@ -124,11 +126,18 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.j') }}s"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Contact Javascript File -->
     <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
-    <
+    <script src="{{ url_for('static', filename='mail/contact.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
+
