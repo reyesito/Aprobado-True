@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from api import (obtener_mascotas_encontradas, obtener_mascotas_perdidas, obtener_coordenadas,
-                 crear_mascota_perdida, crear_mascota_encontrada, crear_informante, crear_duenio,
-                 borrar_mascota_perdida, borrar_mascota_encontrada, borrar_informante, borrar_duenio)
+from file_api.api import *
 
 app = Flask(__name__)
 #renderizado de rutas:
@@ -123,13 +121,13 @@ def registrado():
 
 #funciones de borrado de datos de bbdd:
 
-@app.route("/borrar/perdido/<id>"):
+@app.route("/borrar/perdido/<id>")
 def borrar_perdido(id):
     borrar_mascota_perdida(id)
     borrar_duenio(id)
     return redirect(url_for("lista_perdidos"))
 
-@app.route("/borrar/encontrado/<id>"):
+@app.route("/borrar/encontrado/<id>")
 def borrar_encontrado(id):
     borrar_mascota_encontrada(id)
     borrar_informante(id)
