@@ -18,6 +18,14 @@ def mascota_encontrada():
 def mascota_perdida():
     return render_template('mascota-perdida.html')
 
+@app.route("/lista-mascotas-encontradas")
+def lista_masc_encontradas():
+    return render_template("lista-masc-encontradas.html")
+
+@app.route("/lista-mascotas-perdidas")
+def lista_masc_perdidas():
+    return render_template("lista-masc-perdidas.html")
+
 @app.route("/reportado", methods=["POST"])
 def reportado():
     if request.method == "POST":
