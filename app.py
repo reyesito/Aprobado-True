@@ -10,8 +10,16 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route("/encontrado", methods=["POST","GET"])
-def encontrado():
+@app.route("/contact")
+def mascota_encontrada():
+    return render_template('mascota-encontrada.html')
+
+@app.route("/registro")
+def mascota_perdida():
+    return render_template('mascota-perdida.html')
+
+@app.route("/reportado", methods=["POST"])
+def reportado():
     if request.method == "POST":
         user_name = request.form.get ("fname")
         pet_name = request.form.get("fpetname")
@@ -43,12 +51,10 @@ def encontrado():
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
-        return redirect(url_for('home'))
+    return redirect(url_for("home"))
 
-    return render_template('mascota-encontrada.html')
-
-@app.route("/perdido", methods=["POST","GET"])
-def perdido():
+@app.route("/registrado", methods=["POST"])
+def registrado():
     if request.method == "POST":
         user_name = request.form.get("fname")
         pet_name = request.form.get("fpetname")
@@ -80,9 +86,7 @@ def perdido():
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
     
-        return redirect(url_for('home'))
-    
-    return render_template('mascota-perdida.html')
+    return redirect(url_for("home"))
 '''
 @app.route("", methods=["GET"])
 def obtener_lista_duenios():
