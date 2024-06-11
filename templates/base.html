@@ -30,19 +30,16 @@
 
 <body>
     <!-- Topbar Start -->
-        <div class="row py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="{{ url_for('home') }}" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
-                </a>
-            </div>
+    <div class="row py-3 px-lg-5">
+        <div class="col-lg-4">
+            <a href="{{ url_for('home') }}" class="navbar-brand d-none d-lg-block">
+                <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
+            </a>
         </div>
     </div>
     <!-- Topbar End -->
     
-
-
-    <!-- Barra de Navegación -->
+    <!-- Navbar Start -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
@@ -53,27 +50,25 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Inicio</a>
-                    <a href="{{ url_for('about')}}" class="nav-item nav-link">Nosotros</a>
-                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa Interactivo</a>
-                    <!--<div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="single.html" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>-->
-
+                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Home</a>
+                    <a href="{{ url_for('about')}}" class="nav-item nav-link">About</a>
+                    <li class="submenu">
+                        <a class="nav-item nav-link">Listas mascotas</a>
+                        <ul class="submenu-opciones">
+                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
+                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link">Mascotas encontradas</a></li>
+                        </ul>
+                    </li>
+                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa</a>
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
                 <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
-    <!-- Fin de Barra de Navegación -->
+    <!-- Navbar End -->
 
     {% block body %}
-
     {% endblock %}
 
     <!-- Footer -->
@@ -122,26 +117,18 @@
     </div>
     <!-- Footer Fin -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
 
     <!-- Librerias de Javascript -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.j') }}s"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
     <!-- Contact Javascript File -->
     <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='base.html') }}mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-</body>
-</html>
+    <
