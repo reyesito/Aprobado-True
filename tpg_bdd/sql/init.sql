@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS mascotas_encontradas (
     barrio VARCHAR(30),
     mail_informante VARCHAR(40),
     telefono_informante INT(20),
-    id_informante INT,
+    id_informante INT ,
     PRIMARY KEY(id_mascota),
     FOREIGN KEY (id_informante) REFERENCES informantes(id_informante)
 );

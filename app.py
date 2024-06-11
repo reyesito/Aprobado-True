@@ -145,18 +145,11 @@ def listado():
 def mapa():
     return render_template('mapa.html')
 
-# Ruta para obtener las coordenadas
 @app.route("/api/coordenadas")
-def obtener_coordenadas():
-    conn = engine.connect()
-    query = "SELECT latitud, altitud FROM coordenadas;"
-    try:
-        result = conn.execute(text(query))
-        data = [{'latitud': row[0], 'altitud': row[1]} for row in result]
-        conn.close()
-        return jsonify(data), 200
-    except Exception as e:
-        return jsonify({'message': 'Se ha producido un error: ' + str(e)}), 500
+def api_coordenadas():
+    data, status_code = obtener_coordenadas()
+    return data, status_code
+
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port=5001, debug=True)

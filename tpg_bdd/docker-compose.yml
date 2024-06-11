@@ -3,9 +3,10 @@ services:
     image: mysql
     restart: always
     ports:
-      - '3310:3306'
+      - '3308:3306'
     environment:
       MYSQL_DATABASE: lost_pets_db
       MYSQL_ROOT_PASSWORD: 12345
     volumes:
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
