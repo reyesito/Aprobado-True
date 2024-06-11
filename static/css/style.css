@@ -63,7 +63,10 @@
   display: block;
 }
 
-
+.img-mascota-tendencia {
+  height: 80px !important;
+  width: 80px !important;
+}
 
 :root {
   --blue: #007bff;
