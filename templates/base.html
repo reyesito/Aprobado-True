@@ -107,11 +107,11 @@
                     <li class="submenu">
                         <a class="nav-item nav-link">Listas mascotas</a>
                         <ul class="submenu-opciones">
-                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
-                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link" >Mascotas encontradas</a></li>
+                            <li><a href="{{ url_for('listado_perdidos')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
+                            <li><a href="{{ url_for('listado_encontrados')}}" class="nav-item nav-link" >Mascotas encontradas</a></li>
                         </ul>
                     </li>
-                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa</a>
+                    <a href="{{ url_for('map')}}" class="nav-item nav-link">Mapa</a>
                     <a href="{{ url_for('contact')}}" class="nav-item nav-link">Contact</a>
                     <!--<div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
@@ -122,7 +122,7 @@
                     </div>-->
 
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
+                <a href="{{ url_for('registro')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Reporta una mascota</a>
             </div>
         </nav>
     </div>

@@ -15,11 +15,11 @@ def about():
 
 @app.route("/contact")
 def contact():
-    return render_template('contact.html')
+    return render_template('mascota-encontrada.html')
 
 @app.route("/registro")
 def registro():
-    return render_template('registro.html')
+    return render_template('mascota-perdida.html')
 
 @app.route("/map")#no se si <coordenadas> es necesario
 def map():
