@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="contenedor-errorhandler">
+    <div class="texto-errorhandler">
+        <h2 class="error-title">500 - Internal Server Error</h2>
+        <h3 class="error-message">Lo siento, algo salió mal en nuestro lado. Por favor, inténtalo de nuevo más tarde.</h3>
+        <a href="{{ url_for('home')}}" class="btn btn-lg btn-primary mt-3">Volver al inicio</a>
+    </div>
+</div>
+
+{% endblock %}
