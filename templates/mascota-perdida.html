@@ -12,7 +12,7 @@
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate" action="{{url_for('registrado', _external=True)}}" method="post">
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" action="{{url_for('perdido', _external=True)}}" method="post">
 
                         <div class="title-label-datos">
                             <label for="datos-informante" class="label-formulario"><h5>Tus datos:</label></h5>
@@ -24,11 +24,11 @@
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="tel" name="ftel" placeholder="Mail de contacto" required="required" data-validation-required-message="Por favor ingrese su email" />
+                            <input type="email" class="form-control p-4" id="mail" name="fmail" placeholder="Mail de contacto" required="required" data-validation-required-message="Por favor ingrese su email" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="mail" name="fmail" placeholder="Teléfono/celular (cod. área + número)" required="required" data-validation-required-message="Por favor ingrese su nro de teléfono" />
+                            <input type="number" class="form-control p-4" id="tel" name="ftel" placeholder="Teléfono/celular (cod. área + número)" required="required" data-validation-required-message="Por favor ingrese su nro de teléfono" />
                             <p class="help-block text-danger"></p>
                         </div>
 

@@ -61,8 +61,8 @@
                         </ul>
                     </li>
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
-                <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
+                <a href="{{ url_for('registro_perdido')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('registro_encontrado')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
@@ -127,10 +127,6 @@
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='mail/contact.js') }}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
