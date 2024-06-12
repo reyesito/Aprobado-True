@@ -61,8 +61,8 @@
                         </ul>
                     </li>
                 </div>
-                <a href="{{ url_for('perdido')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
-                <a href="{{ url_for('encontrado')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
+                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
@@ -97,7 +97,6 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href="{{ url_for('home') }}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                             <a class="text-white mb-2" href="{{ url_for('about') }}"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
-                            <a class="text-white mb-2" href="{{ url_for('listado') }}"><i class="fa fa-angle-right mr-2"></i>Mascotas</a>
                             <a class="text-white mb-2" href="{{ url_for('mapa') }}"><i class="fa fa-angle-right mr-2"></i>Mapa Interactivo</a>
                         </div>
                     </div>

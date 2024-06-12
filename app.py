@@ -10,6 +10,14 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route("/contact")
+def mascota_encontrada():
+    return render_template('mascota-encontrada.html')
+
+@app.route("/registro")
+def mascota_perdida():
+    return render_template('mascota-perdida.html')
+
 @app.route("/lista-mascotas-encontradas")
 def lista_masc_encontradas():
     return render_template("lista-masc-encontradas.html")
@@ -18,8 +26,8 @@ def lista_masc_encontradas():
 def lista_masc_perdidas():
     return render_template("lista-masc-perdidas.html")
 
-@app.route("/encontrado", methods=["POST","GET"])
-def encontrado():
+@app.route("/reportado", methods=["POST","GET"])
+def reportado():
     if request.method == "POST":
         user_name = request.form.get ("fname")
         pet_name = request.form.get("fpetname")
@@ -55,8 +63,8 @@ def encontrado():
     
     return render_template('mascota-encontrada.html')
 
-@app.route("/perdido", methods=["POST","GET"])
-def perdido():
+@app.route("/registrado", methods=["POST","GET"])
+def registrado():
     if request.method == "POST":
         user_name = request.form.get("fname")
         pet_name = request.form.get("fpetname")
