@@ -46,23 +46,22 @@
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <label>Sexo:</label>
-                            <br>
-                            <input type="radio" class="option_select p-4" name="fsex" required="required" data-validation-required-message="Por favor especificar sexo" />Macho <br>
-                            <input type="radio" class="option_select p-4" name="fsex" required="required" data-validation-required-message="Por favor especificar sexo" />Hembra <br>
-                            <p class="help-block text-danger"></p>
+                            <select name="fsex" class="opciones" required>
+                                <option value="" disabled selected>Seleccione sexo</option>
+                                <option value="macho">Macho</option>
+                                <option value="hembra">Hembra</option>
+                                </select>
                         </div>
                         <div class="control-group">
                             <input type="text" class="form-control p-4" name="fcolor" placeholder="Color de: Pelaje/Escamas/Plumaje/etc." required="required" data-validation-required-message="Por favor especificar color" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <label >Tamaño:</label>
-                            <br>
-                            <input type="radio" class="option_select p-4" name="fsize" required="required" data-validation-required-message="Por favor especificar tamaño" />Chico <br>
-                            <input type="radio" class="option_select p-4" name="fsize" required="required" data-validation-required-message="Por favor especificar tamaño" />Mediano <br>
-                            <input type="radio" class="option_select p-4" name="fsize" required="required" data-validation-required-message="Por favor especificar tamaño" />Grande <br>
-                            <p class="help-block text-danger"></p>
+                            <select name="fsize" class="opciones" required>
+                                <option value="" disabled selected>Seleccione tamaño</option>
+                                <option value="grande">Grande</option>
+                                <option value="mediano">Mediano</option>
+                                <option value="chico">Chico</option>
                         </div>
 
                         <div class="control-group">

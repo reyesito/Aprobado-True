@@ -9847,6 +9847,22 @@ h6 {
   color: #181818;
 }
 
+.opciones {
+  display: grid;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 16px);
+  padding: 0.375rem 1.50rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #495057ee;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 20px; 
+}
+
 
 .textarea-form{
   resize: none;
