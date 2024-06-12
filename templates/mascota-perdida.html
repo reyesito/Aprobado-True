@@ -12,28 +12,28 @@
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate" method="post">
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" action="{{url_for('perdido', _external=True)}}" method="post">
 
                         <div class="title-label-datos">
                             <label for="datos-informante" class="label-formulario"><h5>Tus datos:</label></h5>
                         </div>
                         
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fname" placeholder="Nombre completo" required="required" data-validation-required-message="Por favor ingrese su nombre" />
+                            <input type="text" class="form-control p-4" id="name" name="fname" placeholder="Nombre completo" required="required" data-validation-required-message="Por favor ingrese su nombre" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fmail" placeholder="Mail de contacto" required="required" data-validation-required-message="Por favor ingrese número de teléfono" />
+                            <input type="text" class="form-control p-4" id="tel" name="ftel" placeholder="Mail de contacto" required="required" data-validation-required-message="Por favor ingrese su email" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="ftel" placeholder="Teléfono/celular (cod. área + número)" required="required" data-validation-required-message="Por favor ingrese mail" />
+                            <input type="text" class="form-control p-4" id="mail" name="fmail" placeholder="Teléfono/celular (cod. área + número)" required="required" data-validation-required-message="Por favor ingrese su nro de teléfono" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fcity" placeholder="Barrio donde resides" required="required" data-validation-required-message="Por favor ingrese su barrio" />
+                            <input type="text" class="form-control p-4" id="city" name="fcity" placeholder="Barrio donde resides" required="required" data-validation-required-message="Por favor ingrese su barrio" />
                             <p class="help-block text-danger"></p>
                         </div>
 
@@ -42,34 +42,34 @@
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fanimal" placeholder="Animal" required="required" data-validation-required-message="Por favor ingrese tipo de animal" />
+                            <input type="text" class="form-control p-4" id="animal" name="fanimal" placeholder="Animal" required="required" data-validation-required-message="Por favor ingrese tipo de animal" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fpetname" placeholder="Nombre" required="required" data-validation-required-message="Ingrese el nombre del animal" />
+                            <input type="text" class="form-control p-4" id="petname" name="fpetname" placeholder="Nombre" required="required" data-validation-required-message="Ingrese el nombre del animal" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="ftype" placeholder="Raza" required="required" data-validation-required-message="Por favor especificar raza" />
+                            <input type="text" class="form-control p-4" id="type" name="ftype" placeholder="Raza" required="required" data-validation-required-message="Por favor especificar raza" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fsex" placeholder="Sexo" required="required" data-validation-required-message="Por favor especificar sexo" />
+                            <input type="text" class="form-control p-4" id="sex" name="fsex" placeholder="Sexo" required="required" data-validation-required-message="Por favor especificar sexo" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fcolor" placeholder="Color (pelaje/escamas/plumaje/etc.)" required="required" data-validation-required-message="Por favor especificar color" />
+                            <input type="text" class="form-control p-4" id="color" name="fcolor" placeholder="Color (pelaje/escamas/plumaje/etc.)" required="required" data-validation-required-message="Por favor especificar color" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control p-4" id="fsize" placeholder="Tamaño (Chico/Mediano/Grande)" required="required" data-validation-required-message="Por favor especificar Tamaño" />
+                            <input type="text" class="form-control p-4" id="size" name="fsize" placeholder="Tamaño (Chico/Mediano/Grande)" required="required" data-validation-required-message="Por favor especificar Tamaño" />
                             <p class="help-block text-danger"></p>
                         </div>
 
                         <div class="control-group">
-                            <textarea class="form-control p-4" rows="6" id="fcomentarios" placeholder="Comentarios (dé información adicional)" required="required" data-validation-required-message="No exceder las 500 palabras"></textarea>
+                            <textarea class="form-control p-4" rows="6" id="comentarios" name="fcomentarios" placeholder="Comentarios (dé información adicional)" required="required" data-validation-required-message="No exceder las 500 palabras"></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
 
