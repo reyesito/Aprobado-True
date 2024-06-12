@@ -9848,6 +9848,11 @@ h6 {
 }
 
 
+.textarea-form{
+  resize: none;
+  border: 1px solid #ced4da;
+}
+
 
 .contenedor-errorhandler{
   background: url('/static/img/img-errorhandeler.png');
