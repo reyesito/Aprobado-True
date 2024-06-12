@@ -10075,3 +10075,17 @@ h6 {
   font-size: 1.5em;
   margin: 20px 0;
 }
+
+#tooltip {
+  position: absolute;
+  background-color: #00bcd4; /* Color de fondo verde azulado */
+  color: #fff; /* Color del texto */
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  display: none; /* Ocultar inicialmente */
+  z-index: 1000; /* Asegurar que esté por encima del mapa */
+}
