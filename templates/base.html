@@ -30,18 +30,15 @@
 
 <body>
     <!-- Topbar Start -->
-        <div class="row py-3 px-lg-5">
-            <div class="col-lg-4">
-                <a href="{{ url_for('home') }}" class="navbar-brand d-none d-lg-block">
-                    <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
-                </a>
-            </div>
+    <div class="row py-3 px-lg-5">
+        <div class="col-lg-4">
+            <a href="{{ url_for('home') }}" class="navbar-brand d-none d-lg-block">
+                <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Lost</span>pets</h1>
+            </a>
         </div>
     </div>
     <!-- Topbar End -->
     
-
-
     <!-- Barra de Navegación -->
     <div class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
@@ -55,26 +52,23 @@
                 <div class="navbar-nav mr-auto py-0">
                     <a href="{{ url_for('home')}}" class="nav-item nav-link active">Inicio</a>
                     <a href="{{ url_for('about')}}" class="nav-item nav-link">Nosotros</a>
-                    <a href="{{ url_for('listado')}}" class="nav-item nav-link">Mascotas</a>
                     <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa Interactivo</a>
-                    <!--<div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="single.html" class="dropdown-item">Blog Detail</a>
-                        </div>
-                    </div>-->
-
+                    <li class="submenu">
+                        <a class="nav-item nav-link">Listas mascotas</a>
+                        <ul class="submenu-opciones">
+                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
+                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link">Mascotas encontradas</a></li>
+                        </ul>
+                    </li>
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
-                <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
+                <a href="{{ url_for('registro_perdido')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('registro_encontrado')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
     <!-- Fin de Barra de Navegación -->
 
     {% block body %}
-
     {% endblock %}
 
     <!-- Footer -->
@@ -92,10 +86,10 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+54 011 5285-0401</p>
                         <p><i class="fa fa-envelope mr-2"></i>lostpets@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
@@ -103,7 +97,6 @@
                         <div class="d-flex flex-column justify-content-start">
                             <a class="text-white mb-2" href="{{ url_for('home') }}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
                             <a class="text-white mb-2" href="{{ url_for('about') }}"><i class="fa fa-angle-right mr-2"></i>Nosotros</a>
-                            <a class="text-white mb-2" href="{{ url_for('listado') }}"><i class="fa fa-angle-right mr-2"></i>Mascotas</a>
                             <a class="text-white mb-2" href="{{ url_for('mapa') }}"><i class="fa fa-angle-right mr-2"></i>Mapa Interactivo</a>
                         </div>
                     </div>
@@ -111,7 +104,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111;">
+    <div class="container-fluid text-white py-4 px-sm-3 px-md-5 black-container">
         <div class="row">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
                 <p class="m-0 text-white">
@@ -123,11 +116,8 @@
     </div>
     <!-- Footer Fin -->
 
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
 
     <!-- Librerias de Javascript -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -138,11 +128,9 @@
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='base.html') }}mail/contact.js"></script>
-
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
+
+

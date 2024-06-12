@@ -10,19 +10,41 @@ def home():
 def about():
     return render_template('about.html')
 
+@app.route("/lista-mascotas-encontradas")
+def lista_masc_encontradas():
+    return render_template("lista-masc-encontradas.html")
 
-@app.route("/contact")
-def mascota_encontrada():
+@app.route("/lista-mascotas-perdidas")
+def lista_masc_perdidas():
+    return render_template("lista-masc-perdidas.html")
+"""
+@app.route("/listado/perdidas") #no se si <data> es necesario
+def listado_perdidos():
+    response = obtener_mascotas_perdidas()
+    data = []
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        return print(f'error: {response.status_code}')
+    return render_template("lista-masc-perdidas.html", data=data)
+
+@app.route("/listado/encontradas") #no se si <data> es necesario
+def listado_encontrados():
+    response = obtener_mascotas_encontradas()
+    if response.status_code == 200:
+        data = response.json()
+    else:
+        return print(f'error: {response.status_code}')
+    return render_template("lista-masc-encontradas.html", data=data)
+"""
+@app.route("/registro_encontrado")
+def registro_encontrado():
     return render_template('mascota-encontrada.html')
 
-@app.route("/registro")
-def mascota_perdida():
-    return render_template('mascota-perdida.html')
-
-@app.route("/reportado", methods=["POST"])
-def reportado():
+@app.route("/encontrado", methods=["POST"])
+def encontrado():
     if request.method == "POST":
-        user_name = request.form.get("fname")
+        user_name = request.form.get ("fname")
         pet_name = request.form.get("fpetname")
         animal = request.form.get("fanimal")
         type_class = request.form.get("ftype")
@@ -52,10 +74,16 @@ def reportado():
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
-    return redirect(url_for("home"))
+        return redirect(url_for("home"))
+    
+    return render_template('mascota-encontrada.html')
 
-@app.route("/registrado", methods=["POST"])
-def registrado():
+@app.route("/registro_perdido")
+def registro_perdido():
+    return render_template('mascota-perdida.html')
+
+@app.route("/perdido", methods=["POST"])
+def perdido():
     if request.method == "POST":
         user_name = request.form.get("fname")
         pet_name = request.form.get("fpetname")
@@ -87,78 +115,24 @@ def registrado():
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
     
-    return redirect(url_for("home"))
-'''
-@app.route("", methods=["GET"])
-def obtener_lista_duenios():
-    return obtener_duenios()
+        return redirect(url_for("home"))
+    return render_template('mascota-perdida.html')
 
-@app.route("", methods=["GET"])
-def obtener_un_duenio(id_owner):
-    return obtener_duenio(id_owner)
+#funciones de borrado de datos de bbdd:
 
-@app.route("", methods=["DELETE"])
-def borrar_un_duenio(id_owner):
-    return borrar_duenio(id_owner)
+@app.route("/borrar/perdido/<id>")
+def borrar_perdido(id):
+    borrar_mascota_perdida(id)
+    borrar_duenio(id)
+    return redirect(url_for("lista_perdidos"))
 
-@app.route("", methods=["GET"])
-def obtener_lista_informantes():
-    return obtener_informantes()
+@app.route("/borrar/encontrado/<id>")
+def borrar_encontrado(id):
+    borrar_mascota_encontrada(id)
+    borrar_informante(id)
+    return redirect(url_for("listado_encontrados"))
 
-@app.route("", methods=["GET"])
-def obtener_un_informante(id_informant):
-    return obtener_informante(id_informant)
-
-@app.route("", methods=["DELETE"])
-def borrar_un_informante(id_informant):
-    return borrar_informante(id_informant)
-
-@app.route("", methods=["GET"])
-def obtener_lista_mascotas_perdidas():
-    return obtener_mascotas_perdidas()
-
-@app.route("", methods=["GET"])
-def obtener_una_mascota_perdida(id_lost_pet):
-    return obtener_mascota_perdida(id_lost_pet)
-
-@app.route("", methods=["DELETE"])
-def borrar_una_mascota_perdida(id_lost_pet):
-    return borrar_mascota_perdida(id_lost_pet)
-
-@app.route("", methods=["GET"])
-def obtener_lista_mascotas_encontradas():
-    return obtener_mascotas_encontradas()
-
-@app.route("", methods=["GET"])
-def obtener_una_mascota_encontrada(id_pet):
-    return obtener_mascota_encontrada(id_pet)
-
-@app.route("", methods=["DELETE"])
-def borrar_una_mascota_encontrada(id_pet):
-    return borrar_mascota_encontrada(id_pet)
-'''
-
-@app.route("/listado")
-def listado():
-    return render_template("listado.html")
-
-@app.route("/mapa")
-def mapa():
-    return render_template('mapa.html')
-
-# Ruta para obtener las coordenadas
-@app.route("/api/coordenadas")
-def obtener_coordenadas():
-    conn = engine.connect()
-    query = "SELECT latitud, altitud FROM coordenadas;"
-    try:
-        result = conn.execute(text(query))
-        data = [{'latitud': row[0], 'altitud': row[1]} for row in result]
-        conn.close()
-        return jsonify(data), 200
-    except Exception as e:
-        return jsonify({'message': 'Se ha producido un error: ' + str(e)}), 500
-
+#renderizado de errores
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
@@ -166,6 +140,15 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+
+@app.route("/mapa")
+def mapa():
+    return render_template('mapa.html')
+
+@app.route("/api/coordenadas")
+def api_coordenadas():
+    data, status_code = obtener_coordenadas()
+    return data, status_code
 
 
 if __name__ == "__main__":

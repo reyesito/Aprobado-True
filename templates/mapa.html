@@ -37,17 +37,20 @@
             });
         }
 
-        // Obtener las coordenadas desde el API
+        // Obtener coordenadas de la API y agregar marcadores
         fetch('/api/coordenadas')
             .then(response => response.json())
             .then(data => {
-                agregarMarcadores(data);
+                agregarMarcadores(data.map(coord => ({latitud: coord.latitud, altitud: coord.altitud})));
             })
-            .catch(error => console.error('Error al obtener coordenadas:', error));
+            .catch(error => {
+                console.error('Error al obtener las coordenadas:', error);
+            });
     }
 
     // Inicializar el mapa cuando la página haya cargado completamente
     window.onload = iniciarMap;
     </script>
 {% endblock %}
+
 
