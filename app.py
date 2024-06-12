@@ -14,10 +14,22 @@ def about():
 def lista_masc_encontradas():
     return render_template("lista-masc-encontradas.html")
 
+
+@app.route("/listado/perdidas")
+def lista_masc_perdidas():
+    try:
+        data = obtener_mascotas_perdidas()
+        return render_template("lista-masc-perdidas.html", data=data)
+    except Exception as e:
+        return f'Error al obtener mascotas perdidas: {str(e)}'
+
+
+
+"""
+
 @app.route("/lista-mascotas-perdidas")
 def lista_masc_perdidas():
     return render_template("lista-masc-perdidas.html")
-"""
 @app.route("/listado/perdidas") #no se si <data> es necesario
 def listado_perdidos():
     response = obtener_mascotas_perdidas()

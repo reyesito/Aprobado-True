@@ -65,9 +65,9 @@ def crear_mascota_encontrada(data_pet):
 
 #Funcionalidades de obtener:
 
-def obtener_duenios():
+def obtener_mascotas_perdidas():
     conn = engine.connect()
-    query = "SELECT * FROM duenios;"
+    query = "SELECT * FROM mascotas_perdidas;"
     try:
         result = conn.execute(text(query))
         conn.close()
@@ -77,15 +77,21 @@ def obtener_duenios():
     data = []
     for row in result:
         entity = {
-            'id_duenio': row.id_duenio,
+            'id_mascota': row.id_mascota,
+            'animal':row.animal,
+            'raza': row.raza,
             'nombre': row.nombre,
-            'mail': row.mail,
-            'telefono': row.telefono,
-            'barrio': row.barrio
+            'color': row.color,
+            'sexo': row.sexo,
+            'tamanio': row.tamanio,
+            'barrio': row.barrio,
+            'mail_duenio': row.mail_duenio,
+            'telefono_duenio': row.telefono_duenio,
+            'id_duenio' : row.id_duenio
         }
         data.append(entity)
-
-    return jsonify(data), 200
+    conn.close() 
+    return data  
 
 def obtener_informantes():
     conn = engine.connect()
