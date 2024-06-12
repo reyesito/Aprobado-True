@@ -1,4 +1,3 @@
-// Definir función para inicializar el mapa
 function iniciarMap() {
         var map = new ol.Map({
             target: 'map',
@@ -13,15 +12,14 @@ function iniciarMap() {
             })
         });
     
-        // Estilo para los marcadores
+        // Estilo para los marcadores con imagen PNG
         var markerStyle = new ol.style.Style({
-            image: new ol.style.Circle({
-                radius: 6,
-                fill: new ol.style.Fill({ color: 'red' }),
-                stroke: new ol.style.Stroke({
-                    color: 'black',
-                    width: 1
-                })
+            image: new ol.style.Icon({
+                anchor: [0.5, 1],
+                anchorXUnits: 'fraction',
+                anchorYUnits: 'fraction',
+                src: '/static/img/icon-map-2.png', 
+                scale: 0.1 
             })
         });
     
@@ -95,6 +93,10 @@ function iniciarMap() {
     
     // Ejecutar la función iniciarMap cuando la página haya cargado completamente
     window.onload = iniciarMap;
+    
+
+
+    
   
     
     
