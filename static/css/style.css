@@ -5,6 +5,69 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ .menu-principal {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+  overflow: hidden;
+}
+
+.menu-principal li {
+  float: left;
+}
+
+.menu-principal li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.menu-principal li a:hover {
+  background-color: #111;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu-opciones {
+  z-index: 1000;
+}
+
+
+.submenu-opciones {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #181818;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu-opciones li {
+  width: 182px;
+}
+
+.submenu-opciones li a {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.submenu:hover .submenu-opciones {
+  display: block;
+}
+
+.img-mascota-tendencia {
+  height: 80px !important;
+  width: 80px !important;
+}
+
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -53,6 +116,102 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
+.buscador {
+  position: absolute;
+  left: 48%;
+  top: 50%;
+  transform: translate(-45%, 52%);
+  padding: 10 px;
+
+}
+
+#barrita {
+  outline: none;
+  box-sizing:border-box;
+  height: 60px;
+  width: 900px;
+  padding: 0 20px;
+  color: black;
+  border-radius: 50px;
+  font-size: 20px;
+  border: 1px solid #ED6436;;
+}
+
+
+
+.lupita {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+  background: #ED6436;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+
+}
+
+.lupita i {
+  font-size: 25px;
+  color: white;
+  line-height: 80px;
+}
+
+#edit-position{
+  margin-top: 200px;
+}
+
+#edit-margen {
+  margin-top: 10px;
+}
+
+.lista-animales ul {
+  list-style-type: none; 
+  color: black;
+}
+
+.mascotas-division {
+  display: flex; 
+  position: relative;
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-right: 20px;
+  width:100%;
+
+  
+}
+
+.mascotas-division2 {
+  display: flex; 
+  position: relative;
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-left: -40px;
+  margin-right: -20px;
+  width:120%;
+}
+
+
+.texto1 {
+  color: #ED6436;
+
+}
+
+.titulo-img{
+  display: block;
+  position: static;
+  margin-left: 2%;
+  white-space: nowrap;
+}
+
+
+
+
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
@@ -63,6 +222,14 @@ body {
   text-align: left;
   background-color: #fff;
 }
+
+.img-perro{
+  position: relative;
+  align-items: relative; 
+  height: 300px
+}
+
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -2339,7 +2506,6 @@ textarea.form-control {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  margin-left: 30px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -7671,7 +7837,9 @@ button.bg-dark:focus {
   margin-bottom: 1rem !important;
 }
 
-.ml-3,
+.ml-3 {
+  margin-top: 10%;
+}
 .mx-3 {
   margin-left: 1rem !important;
 }

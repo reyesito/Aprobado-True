@@ -41,7 +41,7 @@
         fetch('/api/coordenadas')
             .then(response => response.json())
             .then(data => {
-                agregarMarcadores(data);
+                agregarMarcadores(data.map(coord => ({latitud: coord.latitud, altitud: coord.altitud})));
             })
             .catch(error => {
                 console.error('Error al obtener las coordenadas:', error);
@@ -52,4 +52,5 @@
     window.onload = iniciarMap;
     </script>
 {% endblock %}
+
 
