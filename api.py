@@ -115,33 +115,6 @@ def obtener_informantes():
 
     return jsonify(data), 200
 
-def obtener_mascotas_perdidas():
-    conn = engine.connect()
-    query = "SELECT * FROM mascotas_perdidas;"
-    try:
-        result = conn.execute(text(query))
-        conn.close()
-    except SQLAlchemyError as err:
-        return jsonify(str(err.__cause__)), 500
-
-    data = []
-    for row in result:
-        entity = {
-            'id_mascota': row.id_mascota,
-            'animal':row.animal,
-            'raza': row.raza,
-            'nombre': row.nombre,
-            'color': row.color,
-            'sexo': row.sexo,
-            'tamanio': row.tamanio,
-            'barrio': row.barrio,
-            'mail_duenio': row.mail_duenio,
-            'telefono_duenio': row.telefono_duenio,
-            'id_duenio' : row.id_duenio
-        }
-        data.append(entity)
-
-    return jsonify(data), 200
 
 def obtener_mascotas_encontradas():
     conn = engine.connect()

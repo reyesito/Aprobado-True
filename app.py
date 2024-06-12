@@ -15,7 +15,7 @@ def lista_masc_encontradas():
     return render_template("lista-masc-encontradas.html")
 
 
-@app.route("/listado/perdidas")
+@app.route("/lista-mascotas-perdidas")
 def lista_masc_perdidas():
     try:
         data = obtener_mascotas_perdidas()
