@@ -25,8 +25,8 @@
                             <div class="d-flex align-items-end mb-3 mt-n4 ml-n4" >-->
                             
                       <!-- CASO MASCOTA ENCONTRADA CON DUEÑO DESCONOCIDO -->
-                    {% for mascota in data %}
-                     <div class=" mx-3 p-4">
+            {% for mascota in data %}
+            <div class=" mx-3 p-4">
                      <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
                       <div class="mascotas-division">
                         <div class="ml-3">
@@ -47,45 +47,13 @@
                                 </ul>
                                     
                     
-                            <br>
-                            </div>
+                                <br>
                             </div>
                         </div>
+                      </div>
                     </div>
-                </div>   
-                    {% endfor %}
-                <div class=" mx-3 p-4">
-                    <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                     <div class="mascotas-division">
-                       <div class="ml-3">
-
-                           <h1 class="titulo-img"><span class="texto1">Se ha reportado una </span> mascota encontrada<span class="texto1"></span> </h1>
-                           <div class="lista-animales">
-                               <ul>
-                                   <h4><li><span class="texto1">Nombre del dueño:</span> {nombre}</li>
-                                   <li><span class="texto1">Mail de contacto:</span> {mail}</li>
-                                   <li><span class="texto1">Número de contacto:</span> {celular}</li>
-                                   <li><span class="texto1">Animal encontrado:</span> {animal}</li>
-                                   <li><span class="texto1">Tipo:</span> {raza}</li>
-                                   <li><span class="texto1">Sexo:</span> {sexo}</li>
-                                   <li><span class="texto1">Color:</span> {color}</li>
-                                   <li><span class="texto1">Tamaño:</span> {tamaño}</li>
-                                   <li><span class="texto1">Barrio donde se lo vio:</span> {barrio}</li>
-                                   <li><span class="texto1">Comentario adicional:</span> {comentario}</li>
-
-                                   <br>
-                                   
-                               </ul>
-                           <br>
-                           </div>
-                           </div>
-                       </div>
-                   </div>
-
-               </div>       
-   
-
-
+            </div>
+            {% endfor %}
 
     <!-- Fin de codigo -->
 
