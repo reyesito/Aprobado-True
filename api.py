@@ -141,8 +141,8 @@ def obtener_mascotas_encontradas():
             'id_informante' : row.id_informante
         }
         data.append(entity)
-
-    return jsonify(data), 200
+    conn.close() 
+    return data  
 
 def obtener_duenio(id_owner):
     conn = engine.connect()
