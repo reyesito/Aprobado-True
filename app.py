@@ -15,15 +15,22 @@ def lista_masc_encontradas():
     return render_template("lista-masc-encontradas.html")
 
 
-@app.route("/lista-mascotas-perdidas")
+#esto pasa los datos como json
+@app.route('/api/mascotas-perdidas')
+def api_mascotas_perdidas():
+    try:
+        data = obtener_mascotas_perdidas()
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500 
+
+@app.route('/lista-mascotas-perdidas')
 def lista_masc_perdidas():
     try:
         data = obtener_mascotas_perdidas()
         return render_template("lista-masc-perdidas.html", data=data)
     except Exception as e:
-        return f'Error al obtener mascotas perdidas: {str(e)}'
-
-
+        return f'Error al obtener mascotas encontradas: {str(e)}'
 
 """
 
