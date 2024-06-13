@@ -105,7 +105,7 @@ def encontrado():
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
-        return redirect(url_for("home"))
+        return redirect(url_for("lista_masc_encontradas"))
     
     return render_template('mascota-encontrada.html')
 
@@ -147,7 +147,7 @@ def perdido():
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
     
-        return redirect(url_for("home"))
+        return redirect(url_for("lista_masc_perdidas"))
     return render_template('mascota-perdida.html')
 
 #funciones de borrado de datos de bbdd:
