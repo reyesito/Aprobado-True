@@ -1,5 +1,11 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
-from api import *
+#from api import *
+from file_api.found_pets import *
+from file_api.informants import *
+from file_api.lost_pets import *
+from file_api.map import *
+from file_api.owners import*
+
 app = Flask(__name__)
 
 @app.route("/")

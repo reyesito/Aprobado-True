@@ -6,10 +6,8 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pe
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante) 
-                VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}',
-                        '{data_pet["size"]}', '{data_pet["city"]}',
-                        '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante)
+                VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}','{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}','{data_pet["size"]}', '{data_pet["city"]}','{data_pet["mail"]}', '{data_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -32,7 +30,7 @@ def obtener_mascotas_encontradas():
     for row in result:
         entity = {
             'id_mascota': row.id_mascota,
-            'animal': row.animal,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -41,15 +39,15 @@ def obtener_mascotas_encontradas():
             'barrio': row.barrio,
             'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante,
-            'id_informante': row.id_informante
+            'id_informante' : row.id_informante
         }
         data.append(entity)
+    conn.close() 
+    return data  
 
-    return jsonify(data), 200
-
-def obtener_mascota_encontrada(id_pet):
+def obtener_mascota_encontrada(id_mascota):
     conn = engine.connect()
-    query = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_pet};"
+    query = f"SELECT * FROM mascotas_encontradas WHERE id_mascota = {id_mascota};"
     try:
         result = conn.execute(text(query))
         conn.commit()
@@ -60,7 +58,7 @@ def obtener_mascota_encontrada(id_pet):
         row = result.first()
         data = {
             'id_mascota': row.id_mascota,
-            'animal': row.animal,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -69,7 +67,7 @@ def obtener_mascota_encontrada(id_pet):
             'barrio': row.barrio,
             'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante,
-            'id_informante': row.id_informante,
+            'id_informante' :row.id_informante,
         }
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404

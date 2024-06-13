@@ -5,11 +5,10 @@ from sqlalchemy.exc import SQLAlchemyError
 engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pets_db")
 
 def crear_mascota_perdida(data_lost_pet):
+    print(data_lost_pet)
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
-                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}',
-                        '{data_lost_pet["size"]}', '{data_lost_pet["city"]}',
-                        '{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_duenio, telefono_duenio) 
+                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}','{data_lost_pet["size"]}', '{data_lost_pet["city"]}','{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -32,7 +31,7 @@ def obtener_mascotas_perdidas():
     for row in result:
         entity = {
             'id_mascota': row.id_mascota,
-            'animal': row.animal,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -41,11 +40,11 @@ def obtener_mascotas_perdidas():
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
             'telefono_duenio': row.telefono_duenio,
-            'id_duenio': row.id_duenio
+            'id_duenio' : row.id_duenio
         }
         data.append(entity)
-
-    return jsonify(data), 200
+    conn.close() 
+    return data  
 
 def obtener_mascota_perdida(id_lost_pet):
     conn = engine.connect()
@@ -60,7 +59,7 @@ def obtener_mascota_perdida(id_lost_pet):
         row = result.first()
         data = {
             'id_mascota': row.id_mascota,
-            'animal': row.animal,
+            'animal':row.animal,
             'raza': row.raza,
             'nombre': row.nombre,
             'color': row.color,
@@ -69,7 +68,7 @@ def obtener_mascota_perdida(id_lost_pet):
             'barrio': row.barrio,
             'mail_duenio': row.mail_duenio,
             'telefono_duenio': row.telefono_duenio,
-            'id_duenio': row.id_duenio
+            'id_duenio' : row.id_duenio
         }
         return jsonify(data), 200
     return jsonify({"message": "La mascota no existe"}), 404
