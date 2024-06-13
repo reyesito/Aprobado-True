@@ -423,8 +423,8 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Asegura que el icono ocupe todo el contenedor */
-  height: 100%; /* Asegura que el icono ocupe todo el contenedor */
+  width: 100%;
+  height: 100%;
 }
 
 
