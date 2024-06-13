@@ -4,7 +4,7 @@ from file_api.found_pets import *
 from file_api.informants import *
 from file_api.lost_pets import *
 from file_api.map import *
-from file_api.owners import*
+from file_api.owners import *
 
 app = Flask(__name__)
 
@@ -16,6 +16,8 @@ def home():
 def about():
     return render_template('about.html')
 
+#renderizado de listados
+
 @app.route("/lista-mascotas-encontradas")
 def lista_masc_encontradas():
     try:
@@ -24,23 +26,6 @@ def lista_masc_encontradas():
     except Exception as e:
         return f'Error al obtener mascotas encontradas: {str(e)}'
 
-#esto pasa los datos como json
-@app.route('/api/mascotas-encontradas')
-def api_mascotas_encontradas():
-    try:
-        data = obtener_mascotas_encontradas()
-        return jsonify(data), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500 
-
-#esto pasa los datos como json
-@app.route('/api/mascotas-perdidas')
-def api_mascotas_perdidas():
-    try:
-        data = obtener_mascotas_perdidas()
-        return jsonify(data), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500 
 
 @app.route('/lista-mascotas-perdidas')
 def lista_masc_perdidas():
@@ -50,33 +35,14 @@ def lista_masc_perdidas():
     except Exception as e:
         return f'Error al obtener mascotas encontradas: {str(e)}'
 
-"""
-
-@app.route("/lista-mascotas-perdidas")
-def lista_masc_perdidas():
-    return render_template("lista-masc-perdidas.html")
-@app.route("/listado/perdidas") #no se si <data> es necesario
-def listado_perdidos():
-    response = obtener_mascotas_perdidas()
-    data = []
-    if response.status_code == 200:
-        data = response.json()
-    else:
-        return print(f'error: {response.status_code}')
-    return render_template("lista-masc-perdidas.html", data=data)
-
-@app.route("/listado/encontradas") #no se si <data> es necesario
-def listado_encontrados():
-    response = obtener_mascotas_encontradas()
-    if response.status_code == 200:
-        data = response.json()
-    else:
-        return print(f'error: {response.status_code}')
-    return render_template("lista-masc-encontradas.html", data=data)
-"""
+#FORMULARIO DE MASCOTA EMCONTRADA
 @app.route("/registro_encontrado")
 def registro_encontrado():
-    return render_template('mascota-encontrada.html')
+    try:
+        data = obtener_mascotas_encontradas()
+        return render_template("mascota-encontrada.html", data=data)
+    except Exception as e:
+        return f'Error al obtener mascotas encontradas: {str(e)}'
 
 @app.route("/encontrado", methods=["POST"])
 def encontrado():
@@ -115,9 +81,15 @@ def encontrado():
     
     return render_template('mascota-encontrada.html')
 
+#FORMULARIO DE MASCOTA PERDIDA
+
 @app.route("/registro_perdido")
 def registro_perdido():
-    return render_template('mascota-perdida.html')
+    try:
+        data = obtener_mascotas_perdidas()
+        return render_template("mascota-perdida.html", data=data)
+    except Exception as e:
+        return f'Error al obtener mascotas perdidas: {str(e)}'
 
 @app.route("/perdido", methods=["POST"])
 def perdido():
@@ -170,15 +142,7 @@ def borrar_encontrado(id):
     borrar_informante(id)
     return redirect(url_for("listado_encontrados"))
 
-#renderizado de errores
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
-
-@app.errorhandler(500)
-def internal_server_error(e):
-    return render_template('500.html'), 500
-
+#renderizado de mapa
 @app.route("/mapa")
 def mapa():
     return render_template('mapa.html')
@@ -188,6 +152,14 @@ def api_coordenadas():
     data, status_code = obtener_coordenadas()
     return data, status_code
 
+#renderizado de errores
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port=5001, debug=True)
