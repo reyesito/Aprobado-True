@@ -410,13 +410,23 @@ textarea {
   line-height: inherit;
 }
 
-.buttons-size, .buttons-size i {
+.buttons-size {
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+
+.buttons-size i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Asegura que el icono ocupe todo el contenedor */
+  height: 100%; /* Asegura que el icono ocupe todo el contenedor */
+}
+
 
 button,
 input {
