@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS mascotas_encontradas (
     id_mascota INT NOT NULL AUTO_INCREMENT,
     animal VARCHAR(20),
     raza VARCHAR(20),
-    nombre VARCHAR(20),
     color VARCHAR(20),
     sexo VARCHAR(3),
     tamanio VARCHAR(10),
