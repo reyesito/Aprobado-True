@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
-engine = create_engine("mysql+mysqlconnector://root:12345@localhost/lost_pets_db")
+engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pets_db")
 
 #Funcionalidades de crear:
 def crear_duenio(data_owner):
@@ -20,11 +20,10 @@ def crear_duenio(data_owner):
     return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 def crear_mascota_perdida(data_lost_pet):
+    print(data_lost_pet)
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, edad_aprox, tamanio, barrio, mail_duenio, telefono_duenio) 
-                    VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}',
-                            '{data_lost_pet["size"]}', '{data_lost_pet["city"]}',
-                            '{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_duenio, telefono_duenio) 
+                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}','{data_lost_pet["size"]}', '{data_lost_pet["city"]}','{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -49,10 +48,8 @@ def crear_informante(data_informant):
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante) 
-                VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}',
-                        '{data_pet["size"]}', '{data_pet["city"]}',
-                        '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_encontradas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante)
+                VALUES ('{data_pet["animal"]}','{data_pet["type_class"]}','{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}','{data_pet["size"]}', '{data_pet["city"]}','{data_pet["mail"]}', '{data_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -64,50 +61,6 @@ def crear_mascota_encontrada(data_pet):
 
 
 #Funcionalidades de obtener:
-
-def obtener_duenios():
-    conn = engine.connect()
-    query = "SELECT * FROM duenios;"
-    try:
-        result = conn.execute(text(query))
-        conn.close()
-    except SQLAlchemyError as err:
-        return jsonify(str(err.__cause__)), 500
-
-    data = []
-    for row in result:
-        entity = {
-            'id_duenio': row.id_duenio,
-            'nombre': row.nombre,
-            'mail': row.mail,
-            'telefono': row.telefono,
-            'barrio': row.barrio
-        }
-        data.append(entity)
-
-    return jsonify(data), 200
-
-def obtener_informantes():
-    conn = engine.connect()
-    query = "SELECT * FROM informantes;"
-    try:
-        result = conn.execute(text(query))
-        conn.close()
-    except SQLAlchemyError as err:
-        return jsonify(str(err.__cause__)), 500
-
-    data = []
-    for row in result:
-        entity = {
-            'id_informante': row.id_informante,
-            'nombre': row.nombre,
-            'mail': row.mail,
-            'telefono': row.telefono,
-            'barrio': row.barrio
-        }
-        data.append(entity)
-
-    return jsonify(data), 200
 
 def obtener_mascotas_perdidas():
     conn = engine.connect()
@@ -134,8 +87,31 @@ def obtener_mascotas_perdidas():
             'id_duenio' : row.id_duenio
         }
         data.append(entity)
+    conn.close() 
+    return data  
+
+def obtener_informantes():
+    conn = engine.connect()
+    query = "SELECT * FROM informantes;"
+    try:
+        result = conn.execute(text(query))
+        conn.close()
+    except SQLAlchemyError as err:
+        return jsonify(str(err.__cause__)), 500
+
+    data = []
+    for row in result:
+        entity = {
+            'id_informante': row.id_informante,
+            'nombre': row.nombre,
+            'mail': row.mail,
+            'telefono': row.telefono,
+            'barrio': row.barrio
+        }
+        data.append(entity)
 
     return jsonify(data), 200
+
 
 def obtener_mascotas_encontradas():
     conn = engine.connect()
@@ -162,8 +138,8 @@ def obtener_mascotas_encontradas():
             'id_informante' : row.id_informante
         }
         data.append(entity)
-
-    return jsonify(data), 200
+    conn.close() 
+    return data  
 
 def obtener_duenio(id_owner):
     conn = engine.connect()
@@ -340,10 +316,11 @@ def obtener_coordenadas():
         result = conn.execute(text(query))
         conn.close()
     except Exception as e:
-        return jsonify({'message': 'Se ha producido un error: ' + str(e)}), 500
+        return None, 500
 
     data = [{'latitud': row[0], 'altitud': row[1]} for row in result]
 
-    return jsonify(data), 200
+    return data, 200
+
 
 

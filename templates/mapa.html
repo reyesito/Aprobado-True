@@ -1,34 +1,16 @@
-
 {% extends "base.html" %}
 
 {% block body %}
-        <div id="map" style="height: 500px; width: 100%;"></div>
-{% endblock %}
-
-{% block scripts %}
-
-    <!-- Incluir OpenLayers (visor de mapas)-->
+    <div id="map" style="height: 500px; width: 100%;"></div>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script>
-    function iniciarMap() {
-        var map = new ol.Map({
-             // El ID del elemento HTML donde se mostrará el mapa
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            // La vista inicial del mapa, incluyendo el centro del mapa y el nivel de zoom
-            view: new ol.View({
-                //coordenadas de longitud/latitud inicial
-                center: ol.proj.fromLonLat([-58.4127763, -34.5865167]),
-                zoom: 15
-            })
-        });
-    }
-
-    // Inicializar el mapa cuando la página haya cargado completamente
-    window.onload = iniciarMap;
-    </script>
+    <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 {% endblock %}
+
+
+
+
+
+
+
+
