@@ -12,7 +12,7 @@
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" action="{{url_for('perdido', _external=True)}}" method="post">
+                    <form name="sentMessage" id="contactForm" action="{{url_for('perdido', _external=True)}}" method="post" enctype="multipart/form-data">
 
                         <div class="title-label-datos">
                             <label for="datos-informante" class="label-formulario"><h5>Tus datos:</label></h5>
@@ -77,10 +77,9 @@
                             <option value="chico">Chico</option>
 
                         <div class="control-group">
-                            <textarea class="form-control p-4 textarea-form" rows="6" name="fcomentarios" placeholder="Información adicional (opcional)"></textarea>
-                            <p class="help-block text-danger"></p>
+                            <input type="file" name="ffoto" class="custom-file-upload"/>
                         </div>
-
+<br>
                         <div>
                             <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">¡Gracias por tu ayuda!</button>
                         </div>

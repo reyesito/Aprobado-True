@@ -418,6 +418,21 @@ textarea {
   justify-content: center;
 }
 
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #ED6436; /* color de fondo */
+  color: white; /* color del texto */
+  font-weight: bold; /* grosor de la fuente */
+  border-radius: 4px; /* redondeo de las esquinas */
+  width: 100%; /* ancho fijo */
+}
+
+.custom-file-upload:hover {
+  background-color: #c53f12; /* color de fondo al pasar el mouse */
+}
 
 .buttons-size i {
   display: flex;

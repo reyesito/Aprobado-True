@@ -1,4 +1,9 @@
 from flask import Flask, jsonify, render_template, request, redirect, url_for
+#dependencias para subir archivos(fotos)
+from werkzeug.utils import secure_filename
+import os
+from os import path
+
 #from api import *
 from file_api.found_pets import *
 from file_api.informants import *
@@ -22,7 +27,8 @@ def about():
 def lista_masc_encontradas():
     try:
         data = obtener_mascotas_encontradas()
-        return render_template("lista-masc-encontradas.html", data=data)
+        listado = listar_fotos("static/pets/encontrados")
+        return render_template("lista-masc-encontradas.html", data=data, fotos=listado)
     except Exception as e:
         return f'Error al obtener mascotas encontradas: {str(e)}'
 
@@ -31,7 +37,8 @@ def lista_masc_encontradas():
 def lista_masc_perdidas():
     try:
         data = obtener_mascotas_perdidas()
-        return render_template("lista-masc-perdidas.html", data=data)
+        listado = listar_fotos("static/pets/perdidos")
+        return render_template("lista-masc-perdidas.html", data=data, fotos=listado)
     except Exception as e:
         return f'Error al obtener mascotas encontradas: {str(e)}'
 
@@ -40,7 +47,8 @@ def lista_masc_perdidas():
 def registro_encontrado():
     try:
         data = obtener_mascotas_encontradas()
-        return render_template("mascota-encontrada.html", data=data)
+        listado = listar_fotos("static/pets/encontrados")
+        return render_template("mascota-encontrada.html", data=data, fotos=listado)
     except Exception as e:
         return f'Error al obtener mascotas encontradas: {str(e)}'
 
@@ -77,6 +85,18 @@ def encontrado():
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
+        #guardar la foto en el servidor
+        #id = obtener_id_encontrado(found_pet) #-------------------------------------HACER FUNCION EN API------------
+        foto = request.files['ffoto']
+        basepath = path.dirname(__file__)
+        filename = secure_filename(foto.filename)
+
+        extension = filename.split(".")[1]
+        new_name = f"{id}.{extension}"
+
+        upload_path = path.join(basepath, 'static/pets/encontrados', new_name)
+        foto.save(upload_path)
+
         return redirect(url_for("lista_masc_encontradas"))
     
     return render_template('mascota-encontrada.html')
@@ -87,7 +107,8 @@ def encontrado():
 def registro_perdido():
     try:
         data = obtener_mascotas_perdidas()
-        return render_template("mascota-perdida.html", data=data)
+        listado = listar_fotos("static/pets/perdidos")
+        return render_template("mascota-perdida.html", data=data, fotos=listado)
     except Exception as e:
         return f'Error al obtener mascotas perdidas: {str(e)}'
 
@@ -104,6 +125,7 @@ def perdido():
         city = request.form.get("fcity")
         mail = request.form.get("fmail")
         telephone = request.form.get("ftel")
+
         new_owner = {
             "user_name": user_name,
             "mail": mail,
@@ -124,7 +146,19 @@ def perdido():
         print(new_lost_pet)
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
-    
+
+        #guardar la foto en el servidor
+        #id = obtener_id_perdido(new_lost_pet) #-------------------------------------HACER FUNCION EN API------------
+        foto = request.files['ffoto']
+        basepath = path.dirname(__file__)
+        filename = secure_filename(foto.filename)
+
+        extension = filename.split(".")[1]
+        new_name = f"{id}.{extension}"
+
+        upload_path = path.join(basepath, 'static/pets/perdidos', new_name)
+        foto.save(upload_path)
+
         return redirect(url_for("lista_masc_perdidas"))
     return render_template('mascota-perdida.html')
 
@@ -160,6 +194,14 @@ def page_not_found(e):
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('500.html'), 500
+
+#funcion auxiliar
+def listar_fotos(ruta):
+    listado = {}
+    for foto in os.listdir(ruta):
+        filename = foto.split(".")[0]
+        listado[filename] = foto
+    return listado
 
 if __name__ == "__main__":
     app.run("127.0.0.1", port=5001, debug=True)
