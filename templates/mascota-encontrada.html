@@ -117,8 +117,11 @@
             </div>
             {% endfor %}
         </div>
+        <div id="map" style="height: 500px; width: 100%;"></div>
+        <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+        <script src="{{ url_for('static', filename='js/mapa-formulario.js') }}"></script>
     </div>
     <!-- Contact End -->
-
+    
 
 {% endblock %}
