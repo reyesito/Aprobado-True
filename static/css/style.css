@@ -6,6 +6,27 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+ .listilla {
+  display: flex; 
+  position: relative;
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-left: 50px;
+  padding:5%;
+  max-width: 100% !important;
+
+
+}
+.separacion {
+  padding:5%;
+  overflow-wrap: break-word !important; 
+  display:grid;
+  margin-right: 10%;
+
+ }
+
  .menu-principal {
   list-style: none;
   padding: 0;
