@@ -55,7 +55,7 @@ def registro_encontrado():
 @app.route("/encontrado", methods=["POST"])
 def encontrado():
     if request.method == "POST":
-        user_name = request.form.get ("fname")
+        user_name = request.form.get("fname")
         pet_name = request.form.get("fpetname")
         animal = request.form.get("fanimal")
         type_class = request.form.get("ftype")
@@ -65,12 +65,16 @@ def encontrado():
         city = request.form.get("fcity")
         mail = request.form.get("fmail")
         telephone = request.form.get("ftel")
-        new_informant = { 
-            "user_name" : user_name,
-            "mail" : mail,
-            "telephone" : telephone,
-            "city": city 
+        latitude = request.form.get("flatitude")
+        longitude = request.form.get("flongitude")
+        
+        new_informant = {
+            "user_name": user_name,
+            "mail": mail,
+            "telephone": telephone,
+            "city": city
         }
+        
         found_pet = {
             "pet_name": pet_name,
             "animal": animal,
@@ -78,15 +82,17 @@ def encontrado():
             "color": color,
             "sex": sex,
             "size": size,
-            "city": city,
             "telephone": telephone,
-            "mail": mail
+            "mail": mail,
+            "latitude": latitude,
+            "longitude": longitude
         }
+        
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
-        #guardar la foto en el servidor
-        #id = obtener_id_encontrado(found_pet) #-------------------------------------HACER FUNCION EN API------------
+        # Guardar la foto en el servidor
+        # id = obtener_id_encontrado(found_pet)  # HACER FUNCIÓN EN API
         foto = request.files['ffoto']
         basepath = path.dirname(__file__)
         filename = secure_filename(foto.filename)
@@ -98,8 +104,9 @@ def encontrado():
         foto.save(upload_path)
 
         return redirect(url_for("lista_masc_encontradas"))
-    
+
     return render_template('mascota-encontrada.html')
+
 
 #FORMULARIO DE MASCOTA PERDIDA
 

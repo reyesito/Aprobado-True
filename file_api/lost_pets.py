@@ -4,11 +4,10 @@ from sqlalchemy.exc import SQLAlchemyError
 
 engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pets_db")
 
-def crear_mascota_perdida(data_lost_pet):
-    print(data_lost_pet)
+def crear_mascota_perdida(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_perdidas (animal,raza, nombre, color, sexo, tamanio, barrio, mail_duenio, telefono_duenio) 
-                VALUES ('{data_lost_pet["animal"]}','{data_lost_pet["type_class"]}', '{data_lost_pet["pet_name"]}', '{data_lost_pet["color"]}', '{data_lost_pet["sex"]}','{data_lost_pet["size"]}', '{data_lost_pet["city"]}','{data_lost_pet["mail"]}', '{data_lost_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_perdidas (animal, raza, nombre, color, sexo, tamanio, mail_duenio, telefono_duenio, latitud, altitud)
+                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}', '{data_pet["latitude"]}', '{data_pet["longitude"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()

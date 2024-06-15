@@ -18,7 +18,7 @@ function iniciarMap() {
                 anchor: [0.5, 1],
                 anchorXUnits: 'fraction',
                 anchorYUnits: 'fraction',
-                src: '/static/img/icon-map-2.png', 
+                src: '/static/img/refugios.png', 
                 scale: 0.1 
             })
         });
