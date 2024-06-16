@@ -92,16 +92,18 @@ def encontrado():
         crear_mascota_encontrada(found_pet)
 
         # Guardar la foto en el servidor
-        # id = obtener_id_encontrado(found_pet)  # HACER FUNCIÓN EN API
-        foto = request.files['ffoto']
-        basepath = path.dirname(__file__)
-        filename = secure_filename(foto.filename)
+        if request.files['ffoto'].filename != '':
+            response, status_code = obtener_id_encontrado(found_pet)
+            id = response.get_json()
+            foto = request.files['ffoto']
+            basepath = path.dirname(__file__)
+            filename = secure_filename(foto.filename)
 
-        extension = filename.split(".")[1]
-        new_name = f"{id}.{extension}"
+            extension = filename.split(".")[1]
+            new_name = f"{id}.{extension}"
 
-        upload_path = path.join(basepath, 'static/pets/encontrados', new_name)
-        foto.save(upload_path)
+            upload_path = path.join(basepath, 'static/pets/encontrados', new_name)
+            foto.save(upload_path)
 
         return redirect(url_for("lista_masc_encontradas"))
 
@@ -132,6 +134,8 @@ def perdido():
         city = request.form.get("fcity")
         mail = request.form.get("fmail")
         telephone = request.form.get("ftel")
+        latitude = request.form.get('flatitude')
+        longitude = request.form.get('flongitude')
 
         new_owner = {
             "user_name": user_name,
@@ -148,23 +152,27 @@ def perdido():
             "size":size,
             "city":city,
             "telephone":telephone,
-            "mail": mail
+            "mail": mail,
+            "latitude": latitude,
+            "longitude": longitude
         }
         print(new_lost_pet)
         crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
 
         #guardar la foto en el servidor
-        #id = obtener_id_perdido(new_lost_pet) #-------------------------------------HACER FUNCION EN API------------
-        foto = request.files['ffoto']
-        basepath = path.dirname(__file__)
-        filename = secure_filename(foto.filename)
+        if request.files['ffoto'].filename != '':
+            response, status_code = obtener_id_perdido(new_lost_pet) #-------------------------------------HACER FUNCION EN API------------
+            id = response.get_json()
+            foto = request.files['ffoto']
+            basepath = path.dirname(__file__)
+            filename = secure_filename(foto.filename)
 
-        extension = filename.split(".")[1]
-        new_name = f"{id}.{extension}"
+            extension = filename.split(".")[1]
+            new_name = f"{id}.{extension}"
 
-        upload_path = path.join(basepath, 'static/pets/perdidos', new_name)
-        foto.save(upload_path)
+            upload_path = path.join(basepath, 'static/pets/perdidos', new_name)
+            foto.save(upload_path)
 
         return redirect(url_for("lista_masc_perdidas"))
     return render_template('mascota-perdida.html')
@@ -207,7 +215,8 @@ def listar_fotos(ruta):
     listado = {}
     for foto in os.listdir(ruta):
         filename = foto.split(".")[0]
-        listado[int(filename)] = foto
+        if filename.isdigit():
+            listado[int(filename)] = foto
     return listado
 
 if __name__ == "__main__":

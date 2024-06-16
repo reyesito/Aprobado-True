@@ -6,8 +6,8 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pe
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio, mail_informante, telefono_informante, latitud, altitud)
-                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}', '{data_pet["latitude"]}', '{data_pet["longitude"]}');"""
+    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio, mail_informante, telefono_informante)
+                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -85,3 +85,18 @@ def borrar_mascota_encontrada(id_pet):
     except SQLAlchemyError as err:
         return jsonify(str(err.__cause__)), 500
     return jsonify({'message': 'Se ha eliminado correctamente'}), 202
+
+def obtener_id_encontrado(data_pet):
+    conn = engine.connect()
+    query = f"SELECT id_mascota FROM mascotas_encontradas WHERE animal = '{data_pet['animal']}' && raza = '{data_pet['type_class']}' && nombre = '{data_pet['pet_name']}' && color = '{data_pet['color']}' && sexo = '{data_pet['sex']}' && tamanio = '{data_pet['size']}' && mail_informante = '{data_pet['mail']}' && telefono_informante = '{data_pet['telephone']}';"
+    try:
+        result = conn.execute(text(query))
+        conn.commit()
+        conn.close()
+    except SQLAlchemyError as err:
+        return jsonify(str(err.__cause__)), 500
+    if result.rowcount != 0:
+        row = result.first()
+        id = int(row.id_mascota)
+        return jsonify(id), 200
+    return jsonify({"message": "La mascota no existe"}), 404
