@@ -207,7 +207,7 @@ def listar_fotos(ruta):
     listado = {}
     for foto in os.listdir(ruta):
         filename = foto.split(".")[0]
-        listado[filename] = foto
+        listado[int(filename)] = foto
     return listado
 
 if __name__ == "__main__":

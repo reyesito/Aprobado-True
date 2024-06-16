@@ -34,8 +34,15 @@
                             </ul>
                            <br>
                            </div>
-                           </div>
                        </div>
+                       <div class="contenedor-padre">
+                            {% if  mascota.id_mascota in fotos %}
+                                <img src="{{ url_for('static', filename='pets/perdidos/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
+                            {% else %}
+                                <span class="texto1">No hay imagen disponible</span>
+                            {% endif %}
+                       </div>
+                     </div>
                    </div>
 
                </div>       

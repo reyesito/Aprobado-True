@@ -7,7 +7,7 @@
  */
 
  .listilla {
-  display: flex; 
+  display: flex;
   position: relative;
   margin-top: 10%;
   background: #E8C39E;
@@ -188,12 +188,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 .lista-animales ul {
+
   list-style-type: none; 
   color: black;
 }
 
 .mascotas-division {
-  display: flex; 
+  display: flex;
   position: relative;
   margin-top: 10%;
   background: #E8C39E;
@@ -230,8 +231,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   white-space: nowrap;
 }
 
-
-
+.cont-carrusel {
+  display: inline-block;
+  position: relative;
+  margin-top: 10%;
+  margin-right: 20px;
+  width: 80%;
+}
 
 body {
   margin: 0;
@@ -418,6 +424,34 @@ button {
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+.contenedor-padre {
+  position: absolute;
+  width: 35%;
+  right: 40px;
+  bottom: 40px;
+  object-fit: cover;
+}
+.imagen {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.lista-animales {
+  flex: 1;
 }
 
 input,

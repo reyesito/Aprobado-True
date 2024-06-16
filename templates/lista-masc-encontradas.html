@@ -26,10 +26,11 @@
                             
                       <!-- CASO MASCOTA ENCONTRADA CON DUEÑO DESCONOCIDO -->
             {% for mascota in data %}
-            <div class=" mx-3 p-4">
+            <div class=" mx-3 p-4 flex-container">
                      <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
                       <div class="mascotas-division">
-                        <div class="ml-3">
+
+                          <div class="ml-3">
 
                             <h1 class="titulo-img"><span class="texto1">Se ha reportado una </span> mascota encontrada<span class="texto1"></span> </h1>
                             <div class="lista-animales">
@@ -42,13 +43,17 @@
                                     <li><span class="texto1">Sexo:</span> {{ mascota.sexo }}</li>
                                     <li><span class="texto1">Color:</span> {{ mascota.color }}</li>
                                     <li><span class="texto1">Tamaño:</span> {{ mascota.tamanio }}</li>
-                                    <li><span class="texto1">Comentario adicional:</span>  {{ mascota.comentario }}</li></h4>
                                     <br>
                                 </ul>
-                                    
-                    
                                 <br>
                             </div>
+                        </div>
+                        <div class="contenedor-padre">
+                            {% if  mascota.id_mascota in fotos %}
+                                <img src="{{ url_for('static', filename='pets/encontrados/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
+                            {% else %}
+                                <span class="texto1">No hay imagen disponible</span>
+                            {% endif %}
                         </div>
                       </div>
                     </div>

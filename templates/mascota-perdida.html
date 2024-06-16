@@ -80,6 +80,17 @@
                             <input type="file" name="ffoto" class="custom-file-upload"/>
                         </div>
 <br>
+                        <div class="control-group">
+                                <div class="container p-0 py-5">
+                                    <h1 class="display-4 m-0 text-center">Marca en el mapa la mascota <span class="text-primary">perdida</span></h1>
+                                </div>
+                                <div class="text-center">
+                                    <p class="texto1">Haga clic en el mapa para marcar el lugar donde perdio la mascota.</p>
+                                </div>
+                                <div id="map" style="height: 500px; width: 100% ; margin: auto ; margin-bottom: 5%;"></div>
+                                <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+                                <script src="{{ url_for('static', filename='js/mapa-formulario.js') }}"></script>
+                        </div>
                         <div>
                             <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">¡Gracias por tu ayuda!</button>
                         </div>
@@ -89,9 +100,8 @@
 
         </div>
     </div>
-
-
-    <div class="container-fluid bg-light my-5 p-0 py-5">
+    <!-- Contact End -->
+    <div class="control-group container-fluid my-5 p-0 py-5">
         <div class="container p-0 py-5">
             <h1 class="display-4 m-0 text-center">Mascotas <span class="text-primary">perdidas</span></h1>
         </div> 
@@ -101,7 +111,7 @@
             <div class="separacion">
                 <div class="listilla">
                     <div class="ml-3">
-                        <h1><span class="texto1">Se ha reportado una</span> mascota encontrada</h1>
+                        <h1><span class="texto1">Se ha reportado una</span> mascota perdida</h1>
                         <div class="lista-animales">
                             <ul>
                                 <h4>
@@ -114,10 +124,20 @@
                                     <li><span class="texto1">Sexo:</span> {{ mascota.sexo }}</li>
                                     <li><span class="texto1">Color:</span> {{ mascota.color }}</li>
                                     <li><span class="texto1">Tamaño:</span> {{ mascota.tamanio }}</li>
+                                    <br>
+                                    {% if  mascota.id_mascota in fotos %}
+                                        <div class="cont-carrusel" style="display: flex; justify-content: center; align-items: center; margin-top: 150px">
+                                            <img src="{{ url_for('static', filename='pets/perdidos/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
+                                        </div>
+                                    {% else %}
+                                        <span class="texto1">No hay imagen disponible</span>
+                                    {% endif %}
+
                                 </h4>
                                 <br>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
