@@ -5,6 +5,38 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .mapatxt{
+  font-size: 30px;
+  margin-left: 5px;
+  margin-top: 10px;
+ }
+
+#centrar {
+  text-align: center;
+}
+
+ #map {
+  height:800px;
+  width:95%;
+  margin: 0 auto;
+  margin-top: 2.5%;
+}
+
+.opcion {
+  display: flex;
+  margin-top: 2px;
+}
+
+.mapaimg{
+  width: 3%;
+  display: inline-block; 
+  border: 3.5px solid #ED6436; 
+  border-radius: 50%;
+  padding: 10px; 
+  margin-left: 2%;
+  max-width: 100px; 
+  max-height: 100px;
+}
 
  .listilla {
   display: flex;

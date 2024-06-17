@@ -1,11 +1,35 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <div id="map" style="height: 500px; width: 100%;"></div>
+    <div id="map"></div>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-{% endblock %}
+    <br>
+    <h1 id="centrar"><span class="texto1">Indicaciones</span> mapa</h1>
+    
+        <div class="leyenda">
+            <div class="opcion">
+            <img class="mapaimg" src="{{url_for('static', filename='img/refugios.png')}}">
+            <h5 class="mapatxt">Refugios</h5>
+        </div>
+    
+        <div class="opcion">
+            <img class="mapaimg agrandar" src="{{url_for('static', filename='img/perdidos.png')}}">
+            <h5 class="mapatxt">Mascota perdida</h5>
+        </div>
+    
+        <div class="opcion">
+            <img class="mapaimg agrandar" src="{{url_for('static', filename='img/encontrados.png')}}">
+            <h5 class="mapatxt">Mascota encontrada</h5>
+        </div>
+    
+        </div>
+    <br>
+    
+    
+    
+    {% endblock %}
 
 
 
