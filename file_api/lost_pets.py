@@ -91,7 +91,7 @@ def borrar_mascota_perdida(id_lost_pet):
 
 def obtener_id_perdido(data_pet):
     conn = engine.connect()
-    query = f"SELECT id_mascota FROM mascotas_perdidas WHERE animal = '{data_pet['animal']}' && raza = '{data_pet['type_class']}' && nombre = '{data_pet['pet_name']}' && color = '{data_pet['color']}' && sexo = '{data_pet['sex']}' && tamanio = '{data_pet['size']}' && mail_duenio = '{data_pet['mail']}' && telefono_duenio = '{data_pet['telephone']}';"
+    query = f"SELECT id_mascota FROM mascotas_perdidas WHERE animal = '{data_pet['animal']}' && raza = '{data_pet['type_class']}' && nombre = '{data_pet['pet_name']}' && color = '{data_pet['color']}' && sexo = '{data_pet['sex']}' && tamanio = '{data_pet['size']}' && barrio = '{data_pet['city']}' && mail_duenio = '{data_pet['mail']}' && telefono_duenio = '{data_pet['telephone']}';"
     try:
         result = conn.execute(text(query))
         conn.commit()

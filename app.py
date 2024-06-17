@@ -81,12 +81,13 @@ def encontrado():
             "color": color,
             "sex": sex,
             "size": size,
+            "city": city,
             "telephone": telephone,
             "mail": mail,
             "latitude": latitude,
             "longitude": longitude
         }
-        
+
         crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
