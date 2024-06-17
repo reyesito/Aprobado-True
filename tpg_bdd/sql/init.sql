@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS mascotas_encontradas (
     id_mascota INT NOT NULL AUTO_INCREMENT,
     animal VARCHAR(20),
     raza VARCHAR(20),
-    nombre VARCHAR(20),
+    nombre_informante VARCHAR(20),
     color VARCHAR(20),
     sexo VARCHAR(6),
     tamanio VARCHAR(10),
@@ -63,3 +63,22 @@ INSERT INTO coordenadas VALUES(-34.61852,-58.36984);
 INSERT INTO coordenadas VALUES(-34.61576,-58.36992);
 INSERT INTO coordenadas VALUES(-34.615696,-58.368585);
 INSERT INTO coordenadas VALUES(-34.617825,-58.365533);
+
+
+INSERT INTO mascotas_encontradas (
+    nombre_informante,
+    animal,
+    raza,
+    color,
+    sexo,
+    tamanio,
+    latitud,
+    altitud,
+    mail_informante,
+    telefono_informante
+) VALUES
+('Juan','Perro', 'Labrador', 'Negro', 'Macho', 'Grande', 40.7128, -74.0060, 'juanperez@mail.com', '1234567890'),
+('Pedro','Hamster', 'Sirio', 'Dorado', 'Macho', 'Pequeño', 35.6895, 139.6917, 'pedromartinez@mail.com', '5566778899'),
+('Lucia','Conejo', 'Angora', 'Gris', 'Hembra', 'Pequeño', 48.8566, 2.3522, 'luciaf@mail.com', '6677889900'),
+('Carlos','Perico', 'Australiano', 'Verde', 'Macho', 'Mediano', 51.5074, -0.1278, 'carloslopez@mail.com', '1122334455'),
+('Ana','Gato', 'Siames', 'Blanco', 'Hembra', 'Pequeño', 34.0522, -118.2437, 'anagomez@mail.com', '0987654321');
