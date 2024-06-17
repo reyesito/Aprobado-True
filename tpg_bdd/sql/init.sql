@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS mascotas_encontradas (
     color VARCHAR(20),
     sexo VARCHAR(6),
     tamanio VARCHAR(10),
+    barrio VARCHAR(30),
     latitud double(12,7),
     altitud double(12,7), 
     mail_informante VARCHAR(40),
@@ -41,6 +42,7 @@ CREATE TABLE IF NOT EXISTS mascotas_perdidas (
     color VARCHAR(20),
     sexo VARCHAR(6),
     tamanio VARCHAR(10),
+    barrio VARCHAR(30),
     latitud double(12,7),
     altitud double(12,7), 
     mail_duenio VARCHAR(40),
@@ -83,8 +85,7 @@ INSERT INTO mascotas_encontradas (
     latitud,
     altitud,
     mail_informante,
-    telefono_informante,
-    id_informante
+    telefono_informante
 ) VALUES
     ('Perro', 'Labrador', 'Juan', 'Negro', 'Macho', 'Grande', 40.7128000, -74.0060000, 'juanperez@mail.com', '12345678', 6),
     ('Hamster', 'Sirio', 'Pedro', 'Dorado', 'Macho', 'Pequeño', 35.6895000, 139.6917000, 'pedromartinez@mail.com', '55667788', 7),

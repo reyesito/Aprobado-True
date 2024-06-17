@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 import os
 from os import path
 
-#from api import *
 from file_api.found_pets import *
 from file_api.informants import *
 from file_api.lost_pets import *

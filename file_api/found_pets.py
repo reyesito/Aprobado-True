@@ -6,8 +6,8 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pe
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio, mail_informante, telefono_informante)
-                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio,barrio, mail_informante, telefono_informante)
+                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["city"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()
@@ -35,6 +35,7 @@ def obtener_mascotas_encontradas():
             'color': row.color,
             'sexo': row.sexo,
             'tamanio': row.tamanio,
+            'barrio': row.barrio,
             'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante,
             'id_informante' : row.id_informante
@@ -62,6 +63,7 @@ def obtener_mascota_encontrada(id_mascota):
             'color': row.color,
             'sexo': row.sexo,
             'tamanio': row.tamanio,
+            'barrio': row.barrio,
             'mail_informante': row.mail_informante,
             'telefono_informante': row.telefono_informante,
             'id_informante' :row.id_informante,
