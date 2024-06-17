@@ -12,16 +12,8 @@ function iniciarMapClick() {
         })
     });
 
-    var form = document.getElementById('contactForm');
-    var latField = document.createElement('input');
-    latField.type = 'hidden';
-    latField.name = 'flatitude';
-    form.appendChild(latField);
-
-    var lonField = document.createElement('input');
-    lonField.type = 'hidden';
-    lonField.name = 'flongitude';
-    form.appendChild(lonField);
+    var latField = document.getElementById('flatitude');
+    var lonField = document.getElementById('flongitude');
 
     var vectorSource = new ol.source.Vector({});
     var vectorLayer = new ol.layer.Vector({
@@ -58,4 +50,5 @@ function iniciarMapClick() {
 }
 
 window.onload = iniciarMapClick;
+
 

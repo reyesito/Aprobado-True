@@ -6,8 +6,8 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pe
 
 def crear_mascota_encontrada(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante)
-                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["city"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}');"""
+    query = f"""INSERT INTO mascotas_encontradas (animal, raza, nombre, color, sexo, tamanio, barrio, mail_informante, telefono_informante,latitud,longitud)
+                VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["city"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}', '{data_pet["latitude"]}', '{data_pet["longitude"]}');"""
     try:
         conn.execute(text(query))
         conn.commit()

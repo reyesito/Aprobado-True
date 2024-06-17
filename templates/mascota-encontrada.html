@@ -61,6 +61,7 @@
                                 <option value="grande">Grande</option>
                                 <option value="mediano">Mediano</option>
                                 <option value="chico">Chico</option>
+                            </select>
                         </div>
 
                         <div class="control-group">
@@ -71,25 +72,29 @@
                         <div class="control-group">
                             <input type="file" name="ffoto" class="custom-file-upload"/>
                         </div>
-<br>
-                            <div class="control-group">
-                                <div class="container p-0 py-5">
-                                    <h1 class="display-4 m-0 text-center">Marca en el mapa la mascota <span class="text-primary">encontrada</span></h1>
-                                </div>
-                                <div class="text-center">
-                                    <p class="texto1">Haga clic en el mapa para marcar el lugar donde encontró la mascota.</p>
-                                </div>
-                                <div id="map" style="height: 500px; width: 100% ; margin: auto ; margin-bottom: 5%;"></div>
-                                <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-                                <script src="{{ url_for('static', filename='js/mapa-formulario.js') }}"></script>
+                        <br>
+                        <div class="control-group">
+                            <div class="container p-0 py-5">
+                                <h1 class="display-4 m-0 text-center">Marca en el mapa la mascota <span class="text-primary">encontrada</span></h1>
                             </div>
+                            <div class="text-center">
+                                <p class="texto1">Haga clic en el mapa para marcar el lugar donde encontró la mascota.</p>
+                            </div>
+                            <div id="map" style="height: 500px; width: 100%; margin: auto; margin-bottom: 5%;"></div>
+                            <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+                            <script src="{{ url_for('static', filename='js/mapa-formulario.js') }}"></script>
+                        </div>
+                        
+                        <!-- Hidden fields for latitude and longitude -->
+                        <input type="hidden" id="flatitude" name="flatitude" />
+                        <input type="hidden" id="flongitude" name="flongitude" />
+
                         <div>
-                            <button class="btn btn-primary py-3 px-5" style="margin: auto ;" type="submit" id="sendMessageButton">¡Gracias por tu ayuda!</button>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">¡Gracias por tu ayuda!</button>
                         </div>
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- Contact End -->
@@ -98,7 +103,6 @@
             <h1 class="display-4 m-0 text-center">Mascotas <span class="text-primary">encontradas</span></h1>
         </div>
         <div class="owl-carousel testimonial-carousel">
-
             {% for mascota in data %}
             <div class="separacion">
                 <div class="listilla">
@@ -110,26 +114,24 @@
                                     <li><span class="texto1">Mail de contacto:</span> {{ mascota.mail_informante }}</li>
                                     <li><span class="texto1">Número de contacto:</span> {{ mascota.telefono_informante }}</li>
                                     <li><span class="texto1">Barrio donde vive:</span> {{ mascota.barrio }}</li>
-                                    <li><span class="texto1">Animal perdido:</span> {{ mascota.animal }}</li>
+                                    <li><span class="texto1">Animal encontrado:</span> {{ mascota.animal }}</li>
                                     <li><span class="texto1">Nombre de la mascota:</span> {{ mascota.nombre }}</li>
                                     <li><span class="texto1">Tipo:</span> {{ mascota.raza }}</li>
                                     <li><span class="texto1">Sexo:</span> {{ mascota.sexo }}</li>
                                     <li><span class="texto1">Color:</span> {{ mascota.color }}</li>
                                     <li><span class="texto1">Tamaño:</span> {{ mascota.tamanio }}</li>
                                     <br>
-                                    {% if  mascota.id_mascota in fotos %}
-                                        <div class="cont-carrusel" style="display: flex; justify-content: center; align-items: center; margin-top: 150px">
-                                            <img src="{{ url_for('static', filename='pets/encontrados/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
-                                        </div>
+                                    {% if mascota.id_mascota in fotos %}
+                                    <div class="cont-carrusel" style="display: flex; justify-content: center; align-items: center; margin-top: 150px">
+                                        <img src="{{ url_for('static', filename='pets/encontrados/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
+                                    </div>
                                     {% else %}
-                                        <span class="texto1">No hay imagen disponible</span>
+                                    <span class="texto1">No hay imagen disponible</span>
                                     {% endif %}
-
                                 </h4>
                                 <br>
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -137,3 +139,4 @@
         </div>
     </div>
 {% endblock %}
+
