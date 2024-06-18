@@ -9,13 +9,14 @@ def crear_duenio(data_owner):
     query = f"""INSERT INTO duenios (nombre, mail, telefono, barrio) 
                 VALUES ('{data_owner["user_name"]}', '{data_owner["mail"]}', '{data_owner["telephone"]}', '{data_owner["city"]}');"""
     try:
-        conn.execute(text(query))
+        result = conn.execute(text(query))
         conn.commit()
+        duenio_id = result.lastrowid #aca obtengo el id
         conn.close()
+        return duenio_id
     except SQLAlchemyError as err:
         return jsonify({'message': 'Se ha producido un error: ' + str(err.__cause__)}), 500
 
-    return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 def obtener_duenios():
     conn = engine.connect()

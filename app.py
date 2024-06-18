@@ -143,6 +143,7 @@ def perdido():
             "telephone": telephone,
             "city": city
         }
+        duenio_id = crear_duenio(new_owner)
         new_lost_pet = {
             "pet_name": pet_name,
             "animal": animal,
@@ -154,10 +155,9 @@ def perdido():
             "telephone":telephone,
             "mail": mail,
             "latitude": latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "duenio_id":duenio_id
         }
-        print(new_lost_pet)
-        crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
 
         #guardar la foto en el servidor
