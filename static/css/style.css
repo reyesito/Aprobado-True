@@ -474,12 +474,13 @@ button:focus {
   object-fit: cover;
 }
 .imagen {
-  position: absolute;
+  position: relative;
   right: 0px;
   bottom: 0px;
-  width: 100%;
   height: auto;
   object-fit: cover;
+  max-width: 250px;
+  max-height: 250px;
 }
 
 .lista-animales {
