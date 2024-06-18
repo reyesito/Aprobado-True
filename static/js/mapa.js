@@ -28,11 +28,11 @@ function iniciarMap() {
             var iconPath = '/static/img/';
 
             // Determinar el estilo del marcador según el tipo
-            if (coord.tipo === 'coordenadas') {
+            if (coord.tipo === 'refugio') {
                 iconPath += 'refugios.png';
-            } else if (coord.tipo === 'mascotas_encontradas') {
+            } else if (coord.tipo === 'mascota_encontrada') {
                 iconPath += 'encontrados.png';
-            } else if (coord.tipo === 'mascotas_perdidas') {
+            } else if (coord.tipo === 'mascota_perdida') {
                 iconPath += 'perdidos.png';
             }
 
@@ -48,7 +48,7 @@ function iniciarMap() {
 
             var marcador = new ol.Feature({
                 geometry: new ol.geom.Point(ol.proj.fromLonLat([coord.altitud, coord.latitud])),
-                name: "Marcador"
+                name: obtenerNombreMarcador(coord) // Obtener el nombre o ID según el tipo de marcador
             });
 
             marcador.setStyle(markerStyle);
@@ -61,7 +61,7 @@ function iniciarMap() {
 
         map.addLayer(capaMarcadores);
 
-        // Interacción para mostrar el nombre del marcador al pasar el mouse
+        // Interacción para mostrar la información al pasar el mouse
         var selectPointerMove = new ol.interaction.Select({
             condition: ol.events.condition.pointerMove,
             layers: [capaMarcadores]
@@ -70,8 +70,8 @@ function iniciarMap() {
         selectPointerMove.on('select', function(event) {
             var selectedFeature = event.selected[0];
             if (selectedFeature) {
-                var name = selectedFeature.get('name');
-                tooltip.innerHTML = name;
+                var info = selectedFeature.get('name');
+                tooltip.innerHTML = info;
                 tooltip.style.display = 'block';
             } else {
                 tooltip.style.display = 'none';
@@ -91,6 +91,19 @@ function iniciarMap() {
         });
     }
 
+    // Función para obtener el nombre del marcador según su tipo
+    function obtenerNombreMarcador(coord) {
+        if (coord.tipo === 'refugio') {
+            return coord.info; // Nombre del refugio
+        } else if (coord.tipo === 'mascota_encontrada') {
+            return 'Mascota encontrada: ' + coord.info; // ID de la mascota encontrada
+        } else if (coord.tipo === 'mascota_perdida') {
+            return 'Mascota perdida: ' + coord.info; // ID de la mascota perdida
+        } else {
+            return 'Marcador';
+        }
+    }
+
     // Obtener coordenadas de la API y agregar marcadores al cargar la página
     fetch('/api/coordenadas')
         .then(response => response.json())
@@ -98,7 +111,8 @@ function iniciarMap() {
             agregarMarcadores(data.map(coord => ({
                 latitud: coord.latitud,
                 altitud: coord.altitud,
-                tipo: coord.tipo
+                tipo: coord.tipo,
+                info: coord.info
             })));
         })
         .catch(error => {
@@ -108,6 +122,8 @@ function iniciarMap() {
 
 // Ejecutar la función iniciarMap cuando la página haya cargado completamente
 window.onload = iniciarMap;
+
+
 
     
 

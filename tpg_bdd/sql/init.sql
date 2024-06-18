@@ -54,18 +54,24 @@ CREATE TABLE IF NOT EXISTS mascotas_perdidas (
 );
 
 CREATE TABLE IF NOT EXISTS coordenadas (
+    nombre VARCHAR(20),
     latitud double(12,7),
     altitud double(12,7) 
 );
 
-INSERT INTO coordenadas VALUES(-34.617706,-58.368499);
-INSERT INTO coordenadas VALUES(-34.6159878,-58.3695973);
-INSERT INTO coordenadas VALUES(-34.61595,-58.36987);
-INSERT INTO coordenadas VALUES(-34.61852,-58.36984);
-INSERT INTO coordenadas VALUES(-34.61576,-58.36992);
-INSERT INTO coordenadas VALUES(-34.615696,-58.368585);
-INSERT INTO coordenadas VALUES(-34.617825,-58.365533);
+INSERT INTO coordenadas VALUES("Refugio 1",-34.617706,-58.368499);
+INSERT INTO coordenadas VALUES("Refugio 2",-34.6159878,-58.3695973);
+INSERT INTO coordenadas VALUES("Refugio 3",-34.61595,-58.36987);
+INSERT INTO coordenadas VALUES("Refugio 4",-34.61852,-58.36984);
+INSERT INTO coordenadas VALUES("Refugio 5",-34.61576,-58.36992);
+INSERT INTO coordenadas VALUES("Refugio 6",-34.615696,-58.368585);
+INSERT INTO coordenadas VALUES("Refugio 7",-34.617825,-58.365533);
 
+
+INSERT INTO duenios (nombre, mail, telefono, barrio) VALUES
+('Jose', 'josegod@mail.com', '12345', 'Belgrano'),
+('Alicia', 'aliciawonderland@mail.com', '4489', 'San Telmo'),
+('Gojo', 'gojojjk@mail.com', '1138976', 'Olivos');
 
 INSERT INTO informantes (nombre, mail, telefono, barrio) VALUES
 ('Juan', 'juanperez@mail.com', '12345678', 'Barrio A'),
@@ -85,10 +91,29 @@ INSERT INTO mascotas_encontradas (
     latitud,
     altitud,
     mail_informante,
-    telefono_informante
+    telefono_informante,
+    id_informante
 ) VALUES
-    ('Perro', 'Labrador', 'Juan', 'Negro', 'Macho', 'Grande', 40.7128000, -74.0060000, 'juanperez@mail.com', '12345678', 6),
-    ('Hamster', 'Sirio', 'Pedro', 'Dorado', 'Macho', 'Pequeño', 35.6895000, 139.6917000, 'pedromartinez@mail.com', '55667788', 7),
-    ('Conejo', 'Angora', 'Lucia', 'Gris', 'Hembra', 'Pequeño', 48.8566000, 2.3522000, 'luciaf@mail.com', '66778899', 8),
-    ('Perico', 'Australiano', 'Carlos', 'Verde', 'Macho', 'Mediano', 51.5074000, -0.1278000, 'carloslopez@mail.com', '11223344', 9),
-    ('Gato', 'Siames', 'Ana', 'Blanco', 'Hembra', 'Pequeño', 34.0522000, -118.2437000, 'anagomez@mail.com', '09876543', 10);
+    ('Perro', 'Labrador', 'Juan', 'Dorado', 'Macho', 'Grande', -34.61570, -58.363073, 'juanperez@mail.com', '12345678',1),
+    ('Hamster', 'Sirio', 'Pedro', 'Dorado', 'Macho', 'Chico', -34.62560, -58.368597, 'pedromartinez@mail.com', '55667788',2),
+    ('Conejo', 'Angora', 'Lucia', 'Gris', 'Hembra', 'Chico', -34.617700, -58.36880, 'luciaf@mail.com', '66778899',3),
+    ('Perico', 'Australiano', 'Carlos', 'Verde', 'Macho', 'Mediano', -34.627694, -58.365688, 'carloslopez@mail.com', '11223344',4),
+    ('Gato', 'Siames', 'Ana', 'Blanco', 'Hembra', 'Chico', -34.61540, -58.365433, 'anagomez@mail.com', '09876543',5);
+
+INSERT INTO mascotas_perdidas (
+    animal,
+    raza,
+    nombre,
+    color,
+    sexo,
+    tamanio,
+    latitud,
+    altitud,
+    mail_duenio,
+    telefono_duenio,
+    id_duenio
+) VALUES
+    ('Perro', 'Labrador', 'Jose', 'Blanco', 'Macho', 'Mediano', -34.617705, -58.368666, 'josegod@mail.com', '12345',1),
+    ('Perro', 'Caniche', 'Alicia', 'Blanco', 'Macho', 'Chico', -34.617716, -58.36985, 'aliciawonderland@mail.com', '4489',2),
+    ('Gato', 'Birmano', 'Gojo', 'Blanco', 'Hembra', 'Mediano', -34.615024, -58.36577, 'gojojjk@mail.com', '1138976',3);
+   
