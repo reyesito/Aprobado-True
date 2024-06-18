@@ -88,17 +88,18 @@ INSERT INTO mascotas_encontradas (
     color,
     sexo,
     tamanio,
+    barrio,
     latitud,
     altitud,
     mail_informante,
     telefono_informante,
     id_informante
 ) VALUES
-    ('Perro', 'Labrador', 'Juan', 'Dorado', 'Macho', 'Grande', -34.61570, -58.363073, 'juanperez@mail.com', '12345678',1),
-    ('Hamster', 'Sirio', 'Pedro', 'Dorado', 'Macho', 'Chico', -34.62560, -58.368597, 'pedromartinez@mail.com', '55667788',2),
-    ('Conejo', 'Angora', 'Lucia', 'Gris', 'Hembra', 'Chico', -34.617700, -58.36880, 'luciaf@mail.com', '66778899',3),
-    ('Perico', 'Australiano', 'Carlos', 'Verde', 'Macho', 'Mediano', -34.627694, -58.365688, 'carloslopez@mail.com', '11223344',4),
-    ('Gato', 'Siames', 'Ana', 'Blanco', 'Hembra', 'Chico', -34.61540, -58.365433, 'anagomez@mail.com', '09876543',5);
+    ('Perro', 'Labrador', 'Juan', 'Dorado', 'Macho', 'Grande','Belgrano', -34.61570, -58.363073, 'juanperez@mail.com', '12345678',1),
+    ('Hamster', 'Sirio', 'Pedro', 'Dorado', 'Macho', 'Chico,','San telmo', -34.62560, -58.368597, 'pedromartinez@mail.com', '55667788',2),
+    ('Conejo', 'Angora', 'Lucia', 'Gris', 'Hembra', 'Chico','Belgrano', -34.617700, -58.36880, 'luciaf@mail.com', '66778899',3),
+    ('Perico', 'Australiano', 'Carlos', 'Verde', 'Macho','Mediano','Puerto Madero', -34.627694, -58.365688, 'carloslopez@mail.com', '11223344',4),
+    ('Gato', 'Siames', 'Ana', 'Blanco', 'Hembra', 'Chico','Puerto Madero', -34.61540, -58.365433, 'anagomez@mail.com', '09876543',5);
 
 INSERT INTO mascotas_perdidas (
     animal,
@@ -107,13 +108,14 @@ INSERT INTO mascotas_perdidas (
     color,
     sexo,
     tamanio,
+    barrio,
     latitud,
     altitud,
     mail_duenio,
     telefono_duenio,
     id_duenio
 ) VALUES
-    ('Perro', 'Labrador', 'Jose', 'Blanco', 'Macho', 'Mediano', -34.617705, -58.368666, 'josegod@mail.com', '12345',1),
-    ('Perro', 'Caniche', 'Alicia', 'Blanco', 'Macho', 'Chico', -34.617716, -58.36985, 'aliciawonderland@mail.com', '4489',2),
-    ('Gato', 'Birmano', 'Gojo', 'Blanco', 'Hembra', 'Mediano', -34.615024, -58.36577, 'gojojjk@mail.com', '1138976',3);
+    ('Perro', 'Labrador', 'Jose', 'Blanco', 'Macho', 'Mediano','Puerto Madero', -34.617705, -58.368666, 'josegod@mail.com', '12345',1),
+    ('Perro', 'Caniche', 'Alicia', 'Blanco', 'Macho', 'Chico','San Telmo', -34.617716, -58.36985, 'aliciawonderland@mail.com', '4489',2),
+    ('Gato', 'Birmano', 'Gojo', 'Blanco', 'Hembra', 'Mediano','San Telmo', -34.615024, -58.36577, 'gojojjk@mail.com', '1138976',3);
    
