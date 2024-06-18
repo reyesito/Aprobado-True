@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 import os
 from os import path
 
-#from api import *
 from file_api.found_pets import *
 from file_api.informants import *
 from file_api.lost_pets import *
@@ -74,7 +73,7 @@ def encontrado():
             "telephone": telephone,
             "city": city
         }
-        
+        informante_id = crear_informante(new_informant)
         found_pet = {
             "pet_name": pet_name,
             "animal": animal,
@@ -82,13 +81,13 @@ def encontrado():
             "color": color,
             "sex": sex,
             "size": size,
+            "city": city,
             "telephone": telephone,
             "mail": mail,
             "latitude": latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "informante_id":informante_id
         }
-        
-        crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
         # Guardar la foto en el servidor
@@ -143,6 +142,7 @@ def perdido():
             "telephone": telephone,
             "city": city
         }
+        duenio_id = crear_duenio(new_owner)
         new_lost_pet = {
             "pet_name": pet_name,
             "animal": animal,
@@ -154,10 +154,9 @@ def perdido():
             "telephone":telephone,
             "mail": mail,
             "latitude": latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "duenio_id":duenio_id
         }
-        print(new_lost_pet)
-        crear_duenio(new_owner)
         crear_mascota_perdida(new_lost_pet)
 
         #guardar la foto en el servidor
