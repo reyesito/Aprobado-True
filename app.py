@@ -73,7 +73,7 @@ def encontrado():
             "telephone": telephone,
             "city": city
         }
-        
+        informante_id = crear_informante(new_informant)
         found_pet = {
             "pet_name": pet_name,
             "animal": animal,
@@ -85,10 +85,9 @@ def encontrado():
             "telephone": telephone,
             "mail": mail,
             "latitude": latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "informante_id":informante_id
         }
-
-        crear_informante(new_informant)
         crear_mascota_encontrada(found_pet)
 
         # Guardar la foto en el servidor
