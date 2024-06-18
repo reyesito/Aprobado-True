@@ -6,7 +6,7 @@ engine = create_engine("mysql+mysqlconnector://root:12345@localhost:3308/lost_pe
 
 def crear_mascota_perdida(data_pet):
     conn = engine.connect()
-    query = f"""INSERT INTO mascotas_perdidas (animal, raza, nombre, color, sexo, tamanio,barrio, mail_duenio, telefono_duenio,latitud,longitud)
+    query = f"""INSERT INTO mascotas_perdidas (animal, raza, nombre, color, sexo, tamanio,barrio, mail_duenio, telefono_duenio,latitud,altitud)
                 VALUES ('{data_pet["animal"]}', '{data_pet["type_class"]}', '{data_pet["pet_name"]}', '{data_pet["color"]}', '{data_pet["sex"]}', '{data_pet["size"]}', '{data_pet["city"]}', '{data_pet["mail"]}', '{data_pet["telephone"]}', '{data_pet["latitude"]}', '{data_pet["longitude"]}');"""
     try:
         conn.execute(text(query))
@@ -65,6 +65,8 @@ def obtener_mascota_perdida(id_lost_pet):
             'sexo': row.sexo,
             'tamanio': row.tamanio,
             'barrio': row.barrio,
+            'latitud': row.latitud,
+            'altitud': row.altitud,
             'mail_duenio': row.mail_duenio,
             'telefono_duenio': row.telefono_duenio,
             'id_duenio' : row.id_duenio
