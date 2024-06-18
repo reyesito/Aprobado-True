@@ -5,6 +5,33 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+ .listilla2 {
+  display: flex;
+  position: relative;
+  flex-direction: column; 
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-left: 50px;
+  padding: 5%;
+  max-width: 400px !important; 
+  max-height: 900px;
+  width: 500%;
+  height:4000%;
+
+}
+.listilla2 img {
+  max-width: 100%;
+  height: auto; 
+  position: relative; 
+  margin-top: -150px;
+  object-fit: cover; 
+}
+
+
+
  .mapatxt{
   font-size: 30px;
   margin-left: 5px;
@@ -48,8 +75,6 @@
   margin-left: 50px;
   padding:5%;
   max-width: 100% !important;
-
-
 }
 .separacion {
   padding:5%;
