@@ -1,4 +1,4 @@
-# Aprobado-True: Lost Pets
+# Aprobado-True: Lost Pets 🐶
 ##### Proyecto para Introducción a Desarrollo del Software para la Facultad de Ingeniería
 
 - **Nuestro proyecto**
@@ -26,18 +26,25 @@
 
 ## Características
 
-- ### Registro de Reportes:  Permite a los usuarios reportar mascotas perdidas y encontradas.
-- ### Base de Datos: Almacena todos los reportes para fácil acceso y gestión.
-- ### Listado: Muestra todos los reportes en un formato de lista para una rápida visualización.
-- ### Mapa Interactivo: Muestra la ubicación de las mascotas reportadas en un mapa para facilitar la búsqueda.
-
+- ### Registro de Reportes:  
+   **Permite a los usuarios reportar mascotas perdidas y encontradas.**
+- ### Base de Datos: 
+   **Almacena todos los reportes para fácil acceso y gestión.**
+- ### Listado: 
+   **Muestra todos los reportes en un formato de lista para una rápida visualización.**
+- ### Mapa Interactivo: 
+   **Muestra la ubicación de las mascotas reportadas en un mapa para facilitar la búsqueda.**
 
 ## Tecnologías Utilizadas
 
-- ### Frontend: HTML, CSS, JavaScript, ( bootstrap utilizado por el mismo conjunto de templates )
-- ### Backend: Flask-Python
-- ### Base de Datos: MySQL
-- ### Mapas: openlayers,
+- ### Frontend: 
+   **HTML, CSS, JavaScript, ( bootstrap utilizado por el mismo conjunto de templates )**
+- ### Backend: 
+   **Flask-Python**
+- ### Base de Datos: 
+   **MySQL**
+- ### Mapas: 
+   *Openlayers, JavaScript, HTML y la BBDD** 
 
 ## Instalación
 
