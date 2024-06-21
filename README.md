@@ -85,4 +85,4 @@ Este proyecto está bajo la Licencia FIUBA. Consulta el archivo LICENSE para má
 ## Contacto
 Si tienes alguna pregunta o sugerencia, no dudes en contactarnos creando un issue en el repositorio.
 
-> **Importante:** La rama más actualizada es [origin/develop](https://github.com/reyesito/Aprobado-True/tree/develop)
+> **Importante:** La rama más actualizada es [origin/master](https://github.com/reyesito/Aprobado-True/tree/master)
