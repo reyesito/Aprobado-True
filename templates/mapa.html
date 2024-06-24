@@ -1,56 +1,40 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <div id="map" style="height: 500px; width: 100%;"></div>
-    <!-- Incluir OpenLayers (visor de mapas) -->
+    <div id="map"></div>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script>
-    function iniciarMap() {
-        // Crear el mapa
-        var map = new ol.Map({
-            target: 'map',
-            layers: [
-                new ol.layer.Tile({
-                    source: new ol.source.OSM()
-                })
-            ],
-            view: new ol.View({
-                center: ol.proj.fromLonLat([-58.4127763, -34.5865167]),
-                zoom: 15
-            })
-        });
+    <script src="{{ url_for('static', filename='js/mapa.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <br>
+    <h1 id="centrar"><span class="texto1">Indicaciones</span> mapa</h1>
+    
+        <div class="leyenda">
+            <div class="opcion">
+            <img class="mapaimg" src="{{url_for('static', filename='img/refugios.png')}}">
+            <h5 class="mapatxt">Refugios</h5>
+        </div>
+    
+        <div class="opcion">
+            <img class="mapaimg agrandar" src="{{url_for('static', filename='img/perdidos.png')}}">
+            <h5 class="mapatxt">Mascota perdida</h5>
+        </div>
+    
+        <div class="opcion">
+            <img class="mapaimg agrandar" src="{{url_for('static', filename='img/encontrados.png')}}">
+            <h5 class="mapatxt">Mascota encontrada</h5>
+        </div>
+    
+        </div>
+    <br>
+    
+    
+    
+    {% endblock %}
 
-        // Función para agregar marcadores al mapa
-        function agregarMarcadores(coordenadas) {
-            coordenadas.forEach(function(coord) {
-                var marcador = new ol.Feature({
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([coord.altitud, coord.latitud]))
-                });
 
-                var capaMarcadores = new ol.layer.Vector({
-                    source: new ol.source.Vector({
-                        features: [marcador]
-                    })
-                });
 
-                map.addLayer(capaMarcadores);
-            });
-        }
 
-        // Obtener coordenadas de la API y agregar marcadores
-        fetch('/api/coordenadas')
-            .then(response => response.json())
-            .then(data => {
-                agregarMarcadores(data.map(coord => ({latitud: coord.latitud, altitud: coord.altitud})));
-            })
-            .catch(error => {
-                console.error('Error al obtener las coordenadas:', error);
-            });
-    }
 
-    // Inicializar el mapa cuando la página haya cargado completamente
-    window.onload = iniciarMap;
-    </script>
-{% endblock %}
+
 
 

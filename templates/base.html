@@ -24,7 +24,7 @@
     <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet" />
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Customized Bootstrap Stylesheet-->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 
@@ -50,19 +50,19 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
-                    <a href="{{ url_for('home')}}" class="nav-item nav-link active">Inicio</a>
-                    <a href="{{ url_for('about')}}" class="nav-item nav-link">Nosotros</a>
-                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link">Mapa Interactivo</a>
+                    <a href="{{ url_for('home')}}" class="nav-item nav-link  {% if request.path == url_for('home') %}active{% endif %}">Inicio</a>
+                    <a href="{{ url_for('about')}}" class="nav-item nav-link {% if request.path == url_for('about') %}active{% endif %}">Nosotros</a>
+                    <a href="{{ url_for('mapa')}}" class="nav-item nav-link {% if request.path == url_for('mapa') %}active{% endif %}">Mapa Interactivo</a>
                     <li class="submenu">
                         <a class="nav-item nav-link">Listas mascotas</a>
                         <ul class="submenu-opciones">
-                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link">Mascotas perdidas</a></li>
-                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link">Mascotas encontradas</a></li>
+                            <li><a href="{{ url_for('lista_masc_perdidas')}}" class="nav-item nav-link  {% if request.path == url_for('lista_masc_perdidas') %}active{% endif %}">Mascotas perdidas</a></li>
+                            <li><a href="{{ url_for('lista_masc_encontradas')}}" class="nav-item nav-link  {% if request.path == url_for('lista_masc_encontradas') %}active{% endif %}">Mascotas encontradas</a></li>
                         </ul>
                     </li>
                 </div>
-                <a href="{{ url_for('mascota_perdida')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
-                <a href="{{ url_for('mascota_encontrada')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
+                <a href="{{ url_for('registro_perdido')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Perdí a mi mascota</a>
+                <a href="{{ url_for('registro_encontrado')}}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Encontré una mascota</a>
             </div>
         </nav>
     </div>
@@ -86,10 +86,10 @@
                         <p><i class="fa fa-phone-alt mr-2"></i>+54 011 5285-0401</p>
                         <p><i class="fa fa-envelope mr-2"></i>lostpets@gmail.com</p>
                         <div class="d-flex justify-content-start mt-4">
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="https://x.com/Lostpets52"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="https://www.facebook.com/profile.php?id=61560930570393"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0 buttons-size" href="https://www.instagram.com/lostpets52/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-md-4 mb-5">
@@ -127,10 +127,6 @@
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="{{ url_for('static', filename='mail/jqBootstrapValidation.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='mail/contact.js') }}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>

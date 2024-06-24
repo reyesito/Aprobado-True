@@ -9,13 +9,13 @@ def crear_informante(data_informant):
     query = f"""INSERT INTO informantes (nombre, mail, telefono, barrio) 
                 VALUES ('{data_informant["user_name"]}', '{data_informant["mail"]}', {data_informant["telephone"]}, '{data_informant["city"]}');"""
     try:
-        conn.execute(text(query))
+        result = conn.execute(text(query))
         conn.commit()
+        informante_id = result.lastrowid #aca obtengo el id
         conn.close()
+        return informante_id
     except SQLAlchemyError as err:
         return jsonify({'message': 'Se ha producido un error: ' + str(err.__cause__)}), 500
-
-    return jsonify({'message': 'Se ha agregado correctamente'}), 201
 
 def obtener_informantes():
     conn = engine.connect()

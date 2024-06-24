@@ -6,6 +6,84 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
+ .listilla2 {
+  display: flex;
+  position: relative;
+  flex-direction: column; 
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-left: 50px;
+  padding: 5%;
+  max-width: 400px !important; 
+  max-height: 900px;
+  width: 500%;
+  height:4000%;
+
+}
+.listilla2 img {
+  max-width: 100%;
+  height: auto; 
+  position: relative; 
+  margin-top: -150px;
+  object-fit: cover; 
+}
+
+
+
+ .mapatxt{
+  font-size: 30px;
+  margin-left: 5px;
+  margin-top: 10px;
+ }
+
+#centrar {
+  text-align: center;
+}
+
+ #map {
+  height:800px;
+  width:95%;
+  margin: 0 auto;
+  margin-top: 2.5%;
+}
+
+.opcion {
+  display: flex;
+  margin-top: 2px;
+}
+
+.mapaimg{
+  width: 3%;
+  display: inline-block; 
+  border: 3.5px solid #ED6436; 
+  border-radius: 50%;
+  padding: 10px; 
+  margin-left: 2%;
+  max-width: 100px; 
+  max-height: 100px;
+}
+
+ .listilla {
+  display: flex;
+  position: relative;
+  margin-top: 10%;
+  background: #E8C39E;
+  color: white;
+  box-shadow: 20px 20px #ED6436;
+  margin-left: 50px;
+  padding:5%;
+  max-width: 100% !important;
+}
+.separacion {
+  padding:5%;
+  overflow-wrap: break-word !important; 
+  display:grid;
+  margin-right: 10%;
+
+ }
+
  .menu-principal {
   list-style: none;
   padding: 0;
@@ -167,12 +245,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 .lista-animales ul {
+
   list-style-type: none; 
   color: black;
 }
 
 .mascotas-division {
-  display: flex; 
+  display: flex;
   position: relative;
   margin-top: 10%;
   background: #E8C39E;
@@ -209,8 +288,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   white-space: nowrap;
 }
 
-
-
+.cont-carrusel {
+  display: inline-block;
+  position: relative;
+  margin-top: 10%;
+  margin-right: 20px;
+  width: 80%;
+}
 
 body {
   margin: 0;
@@ -399,6 +483,35 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+.contenedor-padre {
+  position: absolute;
+  width: 35%;
+  right: 40px;
+  bottom: 40px;
+  object-fit: cover;
+}
+.imagen {
+  position: relative;
+  right: 0px;
+  bottom: 0px;
+  height: auto;
+  object-fit: cover;
+  max-width: 250px;
+  max-height: 250px;
+}
+
+.lista-animales {
+  flex: 1;
+}
+
 input,
 button,
 select,
@@ -409,6 +522,39 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+.buttons-size {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #ED6436; /* color de fondo */
+  color: white; /* color del texto */
+  font-weight: bold; /* grosor de la fuente */
+  border-radius: 4px; /* redondeo de las esquinas */
+  width: 100%; /* ancho fijo */
+}
+
+.custom-file-upload:hover {
+  background-color: #c53f12; /* color de fondo al pasar el mouse */
+}
+
+.buttons-size i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 
 button,
 input {
@@ -2506,6 +2652,7 @@ textarea.form-control {
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-left: 30px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -10006,4 +10153,85 @@ h6 {
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+
+.label-formulario{
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #181818;
+}
+
+.opciones {
+  display: grid;
+  width: 100%;
+  height: calc(1.5em + 0.75rem + 16px);
+  padding: 0.375rem 1.50rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #495057ee;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 20px; 
+}
+
+
+.textarea-form{
+  resize: none;
+  border: 1px solid #ced4da;
+}
+
+
+.contenedor-errorhandler{
+  background: url('/static/img/img-errorhandeler.png');
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.texto-errorhandler{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.error-title{
+  color: #ED6436;
+  text-shadow: 
+        -1px -1px 2px #F2F2F4,  
+         1px -1px 2px #F2F2F4,
+        -1px  1px 2px #F2F2F4,
+         1px  1px 2px #F2F2F4;
+  font-size: 6em;
+  margin: 0;
+}
+
+.error-message {
+  color: #ED6436;
+  text-shadow: 
+        -1px -1px 2px #F2F2F4,  
+         1px -1px 2px #F2F2F4,
+        -1px  1px 2px #F2F2F4,
+         1px  1px 2px #F2F2F4;
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+#tooltip {
+  position: absolute;
+  background-color: #00bcd4; /* Color de fondo verde azulado */
+  color: #fff; /* Color del texto */
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  display: none; /* Ocultar inicialmente */
+  z-index: 1000; /* Asegurar que esté por encima del mapa */
 }

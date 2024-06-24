@@ -10,52 +10,8 @@
             <div class="d-flex flex-column text-center mb-5">
                 <h1 class="display-4 m-0">Mascotas <span class="text-primary">perdidas</span></h1>
                 
-            </div>
-                                                                <!--<div class=" mx-3 p-4" id="edit-position">
-                      <!--<div class="d-flex align-items-end mb-3 mt-n4 ml-n4" >-->
-                      
-                        <!--<div class="buscador">
-                            <input id='barrita'type="text" placeholder="Busca a tu mascota">
-                            <div class="lupita">
-                                <i class="fa fa-search"></i>
-                            </div>
-                        </div>
-                
-                        <div class=" mx-3 p-4">
-                            <div class="d-flex align-items-end mb-3 mt-n4 ml-n4" >-->
-                            
-                      <!-- CASO MASCOTA ENCONTRADA CON DUEÑO DESCONOCIDO -->
-                     <div class=" mx-3 p-4">
-                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
-                      <div class="mascotas-division">
-                        <div class="ml-3">
-
-                            <h1 class="titulo-img"><span class="texto1">Se ha reportado una </span> mascota perdida<span class="texto1"></span> </h1>
-                            <div class="lista-animales">
-                                <ul>
-                                    <h4><li><span class="texto1">Nombre del dueño:</span> {nombre}</li>
-                                    <li><span class="texto1">Mail de contacto:</span> {mail}</li>
-                                    <li><span class="texto1">Número de contacto:</span> {celular}</li>
-                                    <li><span class="texto1">Barrio donde vive:</span> {barrio}</li>
-                                    <li><span class="texto1">Animal perdido:</span> {animal}</li>
-                                    <li><span class="texto1">Nombre de la mascota:</span> {nombre_mascota}</li>
-                                    <li><span class="texto1">Tipo:</span> {raza}</li>
-                                    <li><span class="texto1">Sexo:</span> {sexo}</li>
-                                    <li><span class="texto1">Color:</span> {color}</li>
-                                    <li><span class="texto1">Tamaño:</span> {tamaño}</li>
-                                    <li><span class="texto1">Comentario adicional:</span> {comentario}</li>
-
-                                    <br>
-                                    
-                                </ul>
-                            <br>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>       
-
+            </div>  
+                {% for mascota in data %}
                 <div class=" mx-3 p-4">
                     <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
                      <div class="mascotas-division">
@@ -63,29 +19,33 @@
 
                            <h1 class="titulo-img"><span class="texto1">Se ha reportado una </span> mascota perdida<span class="texto1"></span> </h1>
                            <div class="lista-animales">
-                               <ul>
-                                   <h4><li><span class="texto1">Nombre del dueño:</span> {nombre}</li>
-                                   <li><span class="texto1">Mail de contacto:</span> {mail}</li>
-                                   <li><span class="texto1">Número de contacto:</span> {celular}</li>
-                                   <li><span class="texto1">Barrio donde vive:</span> {barrio}</li>
-                                   <li><span class="texto1">Animal perdido:</span> {animal}</li>
-                                   <li><span class="texto1">Nombre de la mascota:</span> {nombre_mascota}</li>
-                                   <li><span class="texto1">Tipo:</span> {raza}</li>
-                                   <li><span class="texto1">Sexo:</span> {sexo}</li>
-                                   <li><span class="texto1">Color:</span> {color}</li>
-                                   <li><span class="texto1">Tamaño:</span> {tamaño}</li>
-                                   <li><span class="texto1">Comentario adicional:</span> {comentario}</li>
-
-                                   <br>
-                                   
-                               </ul>
+                            <ul>
+                                <h4><li><span class="texto1">Mail de contacto:</span> {{ mascota.mail_duenio }}</li>
+                                <li><span class="texto1">Número de contacto:</span> {{ mascota.telefono_duenio }}</li>
+                                <li><span class="texto1">Barrio donde vive:</span> {{ mascota.barrio }}</li>
+                                <li><span class="texto1">Animal perdido:</span> {{ mascota.animal }}</li>
+                                <li><span class="texto1">Nombre de la mascota:</span> {{ mascota.nombre }}</li>
+                                <li><span class="texto1">Tipo:</span> {{ mascota.raza }}</li>
+                                <li><span class="texto1">Sexo:</span> {{ mascota.sexo }}</li>
+                                <li><span class="texto1">Color:</span> {{ mascota.color }}</li>
+                                <li><span class="texto1">Tamaño:</span> {{ mascota.tamanio }}</li>
+                                <br>
+                            </ul>
                            <br>
                            </div>
-                           </div>
                        </div>
+                       <div class="contenedor-padre">
+                            {% if  mascota.id_mascota in fotos %}
+                                <img src="{{ url_for('static', filename='pets/perdidos/' + fotos[mascota.id_mascota]) }}" class="imagen" alt="imagen de mascota" >
+                            {% else %}
+                                <span class="texto1">No hay imagen disponible</span>
+                            {% endif %}
+                       </div>
+                     </div>
                    </div>
 
                </div>       
+               {% endfor %}
 
     <!-- Fin de codigo -->
 
