@@ -50,3 +50,14 @@ function iniciarMapClick() {
 window.onload = iniciarMapClick;
 
 
+var form = document.getElementById('contactForm');
+
+form.addEventListener('submit', function(event) {
+    var latitud = document.getElementById('flatitude').value;
+    var longitud = document.getElementById('flongitude').value;
+
+    if (!latitud || !longitud) {
+        alert('Por favor ingrese la ubicación en el mapa.');
+        event.preventDefault(); 
+    }
+});
