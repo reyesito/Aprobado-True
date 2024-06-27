@@ -11,7 +11,7 @@
             <div class="col-12 col-sm-8 mb-5">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" action="{{ url_for('perdido', _external=True) }}" method="post" enctype="multipart/form-data">
+                    <form name="sentMessage" id="contactForm2" action="{{ url_for('perdido', _external=True) }}" method="post" enctype="multipart/form-data">
 
                         <div class="title-label-datos">
                             <label for="datos-informante" class="label-formulario"><h5>Tus datos:</h5></label>
@@ -56,7 +56,7 @@
                         </div>
 
                         <div class="control-group">
-                            <select name="fsex" class="opciones">
+                            <select name="fsex" class="opciones" required>
                                 <option value="" disabled selected>Seleccione sexo</option>
                                 <option value="macho">Macho</option>
                                 <option value="hembra">Hembra</option>
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="control-group">
-                            <select name="fsize" class="opciones">
+                            <select name="fsize" class="opciones" required>
                                 <option value="" disabled selected>Seleccione tamaño</option>
                                 <option value="grande">Grande</option>
                                 <option value="mediano">Mediano</option>
